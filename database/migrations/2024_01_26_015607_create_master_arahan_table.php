@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            // $table->id();
+        Schema::create('master_arahan', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('npp')->unique();
-            // $table->string('email')->unique();
-            // $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreignUuid('user_id');
+            $table->string('nama_arahan')->nullable();
+            $table->string('output_arahan')->nullable();
+            $table->date('target_selesai')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('master_arahan');
     }
 };
