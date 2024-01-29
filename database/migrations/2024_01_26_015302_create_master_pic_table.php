@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('master_pic', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pic');
+            $table->string('nama_pic')->unique();
             $table->unsignedTinyInteger('level_pic');
             $table->timestamps();
         });
