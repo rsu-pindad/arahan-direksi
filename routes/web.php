@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Livewire\Beranda;
+use App\Livewire\LoginUser;
+use App\Livewire\RegisterUser;
+use App\Livewire\Pic\Pic;
+use App\Livewire\Profile\UserProfile;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +19,14 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    
-});
+Route::get('/', Beranda::class)->name('beranda-tamu');
+Route::get('/beranda', Beranda::class)->name('beranda');
+Route::get('/login', LoginUser::class)->name('login');
+Route::get('/logout', [LoginUser::class,'logout']);
+Route::get('/register', RegisterUser::class)->name('register');
 
+// PIC 
+Route::get('/pic', Pic::class);
+
+// User Profiel
+Route::get('/profile', UserProfile::class);
