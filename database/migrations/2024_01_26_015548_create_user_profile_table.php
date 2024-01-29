@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             // $table->foreignId('user_id')->contrained()->onDelete('cascade');
             $table->foreignUuid('user_id');
-            $table->bigInteger('pic_id')->unsigned()->index();
+            $table->bigInteger('pic_id')->unsigned()->index()->nullable();
             // $table->foreignUuid('pic_id');
             $table->string('nama_profile')->nullable();
             $table->string('nomor_handphone_profile')->unique()->nullable();
