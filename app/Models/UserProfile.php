@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class UserProfile extends Model
 {
-    use HasFactory;
+    use HasFactory,HasUuids;
 
-    protected $tables = 'user_profile';
+    protected $table = 'user_profile';
+
+    protected $guarded = ['id'];
 
     protected $fillable = [
         'user_id',
