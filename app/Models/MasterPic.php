@@ -9,10 +9,12 @@ class MasterPic extends Model
 {
     use HasFactory;
 
-    protected $tables = 'master_pic';
+    protected $table = 'master_pic';
+
+    protected $guarded = ['id'];
 
     protected $fillable = [
         'nama_pic',
-        'leve_pic',
+        'level_pic',
     ];
 }
