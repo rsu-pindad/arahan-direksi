@@ -2,16 +2,18 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Beranda extends Component
 {
     public function render()
     {
-        if(auth()->check()){
+        // if(auth()->check()){
+        if(Auth::check()){
             return view('livewire.beranda');
         }else{
-            return $this->redirect('login');
+            redirect('login');
         }
     }
 
