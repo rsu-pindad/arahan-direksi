@@ -21,13 +21,8 @@ class Userprofile extends Component
     {
         return view('livewire.profile.userprofile')->with([
             'pic' => Pic::orderByDesc('nama_pic')->get(),
+            'profiles' => Profile::firstWhere('user_id', auth()->user()->id),
         ]);
-
-        // $pic = Pic::orderByDesc('nama_pic')->get();
-
-        // dd($pic);
-
-        // return view('livewire.profile.userprofile');
     }
 
     public function save()
