@@ -1,13 +1,12 @@
 <div class="login-box">
-    @if(session('success'))
-        <div class="alert alert-success">
+    @if(session()->has('success'))
+        <span class="alert alert-success">
             {{ session('success') }}
-        </div>
-    @endif
-    @if(session('failure'))
-        <div class="alert alert-danger">
+        </span>
+    @elseif(session()->has('failure'))
+        <span class="alert alert-danger">
             {{ session('failure') }}
-        </div>
+        </span>
     @endif
     
     <!-- Login -->

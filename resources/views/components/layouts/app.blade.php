@@ -13,7 +13,7 @@
         <script src="{{ asset("vendor/adminlte/dist/js/adminlte.min.js") }}"></script>
         <!-- <script src="{{asset("vendor\popper\popper.min.js")}}"></script> -->
 
-        <title>{{ $title ?? 'Page Title' }}</title>
+        <title>{{ $title ?? 'RSU Pindad' }}</title>
     </head>
     @if(Route::is('login') or Route::is('register'))
     <body class="login-page">
