@@ -14,9 +14,44 @@
          </div>
          <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+               <li class="nav-header">MASTER</li>
                <li class="nav-item">
                   <a href="#" class="nav-link">
-                     <i class="nav-icon fas fa-tachometer-alt"></i>
+                     <i class="nav-icon far fa-envelope"></i>
+                     <p>
+                        Arahan
+                        <i class="right fas fa-angle-left"></i>
+                     </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                     <li class="nav-item">
+                        <a wire:navigate href="/arahan" class="nav-link">
+                           <i class="far fa-circle nav-icon"></i>
+                           <p>Data Arahan</p>
+                        </a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="nav-item">
+                  <a href="#" class="nav-link">
+                     <i class="nav-icon fas fa-tasks"></i>
+                     <p>
+                        Progress
+                        <i class="right fas fa-angle-left"></i>
+                     </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                     <li class="nav-item">
+                        <a wire:navigate href="/progress" class="nav-link">
+                           <i class="far fa-circle nav-icon"></i>
+                           <p>Data Progress</p>
+                        </a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="nav-item">
+                  <a href="#" class="nav-link">
+                     <i class="nav-icon fas fa-user-tag"></i>
                      <p>
                         Pic
                         <i class="right fas fa-angle-left"></i>
@@ -30,6 +65,15 @@
                         </a>
                      </li>
                   </ul>
+               </li>
+               <li class="nav-header">MONITOR</li>
+               <li class="nav-item">
+                  <a href="/arahan-progress" class="nav-link">
+                     <i class="nav-icon fas fa-mail-bulk"></i>
+                     <p>
+                        Progress Arahan
+                     </p>
+                  </a>
                </li>
                <li class="nav-item">
                   <a href="../widgets.html" class="nav-link">
