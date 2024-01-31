@@ -4,22 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class MasterArahan extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
-    protected $tables = 'master_arahan';
+    protected $table = 'master_arahan';
+    protected $guarded = ['id'];
 
     protected $fillable = [
-        'user_id',
+        'user_profile_id',
         'nama_arahan',
-        'output_profile',
+        'output_arahan',
         'target_selesai',
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class, 'user_id');
+    public function user_profile(){
+        return $this->belongsTo(UserProfile::class, 'user_profile_id');
     }
 
 }

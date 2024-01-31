@@ -26,11 +26,11 @@ class RegisterUser extends Component
             if($userExists){
                 session()->flash('failure', 'npp sudah ada');
             }else{
-                $user = User::create(
+                $user = User::updateOrCreate(
                     $this->only(['npp','password'])
                 );
                 if($user == true){    
-                    $profile = UserProfile::create([
+                    $profile = UserProfile::updateOrCreate([
                         'user_id' => $user->id,
                     ]);
                     session()->flash('success', 'pic berhasil di buat');

@@ -12,10 +12,10 @@ class Userprofile extends Component
     public Profile $userProfile;
     public Form $form;
 
-    public function mount()
-    {
-        $this->userProfile = Profile::firstWhere('user_id', auth()->user()->id);
-    }
+    // public function mount()
+    // {
+        // $this->userProfile = Profile::firstWhere('user_id', auth()->user()->id);
+    // }
 
     public function render()
     {

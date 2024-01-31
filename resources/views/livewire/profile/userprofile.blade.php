@@ -17,7 +17,7 @@
                <div class="col-lg-6 col-sm-12 col-xs-12">
                   <div class="card">
                      <div class="card-header">
-                        <h3 class="card-title">{{auth()->user()->npp}}</h3>
+                        <h3 class="card-title">{{auth()->user()->npp ?? ''}}</h3>
                         <div class="card-tools">
                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                            <i class="fas fa-minus"></i>
@@ -53,14 +53,13 @@
                                 </div>
                             <button class="btn btn-primary" type="submit">Simpan</button>
                         </form>
-                        @if(session('success'))
+                        @if(session()->has('success'))
                         <div class="alert alert-success alert-dismissible">
                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                            <h5><i class="icon fas fa-check"></i> </h5>
                            {{ session('success') }}
                         </div>
-                        @endif
-                        @if(session('failure'))
+                        @elseif(session()->has('failure'))
                         <div class="alert alert-danger alert-dismissible">
                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                            <h5><i class="icon fas fa-ban"></i></h5>
@@ -80,9 +79,9 @@
                            <img class="profile-user-img img-fluid img-circle" src="https://api.dicebear.com/7.x/bottts/svg" alt="User profile picture">
                         </div>
                         <h3 class="profile-username text-center">
-                           {{$profiles->nama_profile}}
+                           {{$profiles->nama_profile ?? '' }}
                         </h3>
-                        <p class="text-muted text-center">{{$profiles->pic->nama_pic}}</p>
+                        <p class="text-muted text-center">{{$profiles->pic->nama_pic ?? ''}}</p>
                         <ul class="list-group list-group-unbordered mb-3">
                            <li class="list-group-item">
                               <b>Arahan Selesai</b> <a class="float-right">1,322</a>

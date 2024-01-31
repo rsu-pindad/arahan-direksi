@@ -13,7 +13,7 @@ class ProfileForm extends Form
     // #[Validate('required')]
     // #[Validate('required')]
     public $user_id = '';
-    public $pic_id = 1;
+    public $pic_id = '';
     public $nama_profile = '';
     public $nomor_handphone_profile = '';
     public $email = '';
@@ -25,6 +25,7 @@ class ProfileForm extends Form
                 Rule::unique('user_profile')->ignore($this->user_id),
             ],
             'pic_id' => [
+                'bail',
                 'required',
             ],
             'nama_profile' => [
@@ -33,10 +34,12 @@ class ProfileForm extends Form
                 'min:3',
                 'max:50'],
             'nomor_handphone_profile' => [
+                'nullable',
                 'min:10',
                 'max:13'
             ],
             'email' => [
+                'nullable',
                 'email', 
                 Rule::unique('user_profile','email'),
             ],
@@ -54,10 +57,6 @@ class ProfileForm extends Form
 
     public function update()
     {
-        $this->validate();
-        $userId = auth()->user()->id;
-        $findId = Profile::where('user_id', $userId)->first();
-
         try {
             $this->validate();
             $userId = auth()->user()->id;
@@ -65,6 +64,7 @@ class ProfileForm extends Form
             $updateProfile = Profile::find($findId->id);
             // $updateProfile->user_id = false;
             $updateProfile->update(
+                // $this->all()
                 $this->only([
                     'pic_id',
                     'nama_profile',
@@ -72,15 +72,10 @@ class ProfileForm extends Form
                     'email',
                 ])
             );
-            if($updateProfile == true){
-                $this->reset();
-                session()->flash('success', 'profile berhasil diperbarui');
-            }else{
-                session()->flash('failure', 'terjadi kesalahan');
-            }
+            $this->reset();
+            session()->flash('success', 'profile diperbarui');
         } catch (\Illuminate\Database\QueryException $exception) {
-            $errorInfo = $exception->getMessage();
-            return $errorInfo;
+            session()->flash('failure', $exception->getMessage());
         }
     }
 }

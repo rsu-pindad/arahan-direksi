@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class UserProfile extends Model
 {
-    use HasFactory,HasUuids;
+    use HasFactory, HasUuids;
 
     protected $table = 'user_profile';
 

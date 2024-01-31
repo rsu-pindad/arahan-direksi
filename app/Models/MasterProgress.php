@@ -11,6 +11,8 @@ class MasterProgress extends Model
 
     protected $tables = 'master_progress';
 
+    protected $guarded = ['id'];
+
     protected $fillable = [
         'status_progress',
     ];

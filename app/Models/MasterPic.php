@@ -11,7 +11,7 @@ class MasterPic extends Model
 
     protected $table = 'master_pic';
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','user_id'];
 
     protected $fillable = [
         'nama_pic',

@@ -19,7 +19,7 @@
                   <a href="#" class="nav-link">
                      <i class="nav-icon far fa-envelope"></i>
                      <p>
-                        Arahan
+                        Deskripsi Arahan
                         <i class="right fas fa-angle-left"></i>
                      </p>
                   </a>
@@ -27,7 +27,7 @@
                      <li class="nav-item">
                         <a wire:navigate href="/arahan" class="nav-link">
                            <i class="far fa-circle nav-icon"></i>
-                           <p>Data Arahan</p>
+                           <p>Data Deskripsi Arahan</p>
                         </a>
                      </li>
                   </ul>
@@ -53,7 +53,7 @@
                   <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-user-tag"></i>
                      <p>
-                        Pic
+                        PIC
                         <i class="right fas fa-angle-left"></i>
                      </p>
                   </a>
@@ -61,14 +61,32 @@
                      <li class="nav-item">
                         <a wire:navigate href="/pic" class="nav-link">
                            <i class="far fa-circle nav-icon"></i>
-                           <p>Data Pic</p>
+                           <p>Data PIC</p>
+                        </a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="nav-header">TUGAS</li>
+               <li class="nav-item">
+                  <a href="#" class="nav-link">
+                     <i class="nav-icon fas fa-paper-plane"></i>
+                     <p>
+                        Tugas Arahan
+                        <i class="right fas fa-angle-left"></i>
+                     </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                     <li class="nav-item">
+                        <a wire:navigate href="/assign-arahan" class="nav-link">
+                           <i class="far fa-circle nav-icon"></i>
+                           <p>Data Tugas Arahan</p>
                         </a>
                      </li>
                   </ul>
                </li>
                <li class="nav-header">MONITOR</li>
                <li class="nav-item">
-                  <a href="/arahan-progress" class="nav-link">
+                  <a href="/progress-arahan" class="nav-link" wire:navigate>
                      <i class="nav-icon fas fa-mail-bulk"></i>
                      <p>
                         Progress Arahan

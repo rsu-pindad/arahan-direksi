@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('master_arahan', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('user_id');
+            // $table->foreignUuid('user_id');
+            $table->foreignUuid('user_profile_id');
             $table->string('nama_arahan')->nullable();
             $table->string('output_arahan')->nullable();
             $table->date('target_selesai')->nullable();
 
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate();
+            // $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate();
+            $table->foreign('user_profile_id')->references('id')->on('user_profile')->cascadeOnUpdate();
             $table->timestamps();
         });
     }
