@@ -24,8 +24,8 @@
     @endif
     
         <!-- Wrapper -->
+        @auth
         <div class="wrapper">
-            @auth
             <!-- Navbar  -->
             @include('components.layouts.navbar')
             <!-- End Navbar  -->
@@ -42,11 +42,12 @@
             @include('components.layouts.footer')
             <!-- End Footer -->
 
-            @endauth
-            @livewireScripts
-
         </div>
         <!-- End Wrapper -->
+        @else
+        {{$slot}}
+        @endauth
+        @livewireScripts
 
     </body>
 </html>
