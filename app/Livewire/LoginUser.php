@@ -47,10 +47,10 @@ class LoginUser extends Component
 
     public function render()
     {
-        if(auth()->check()){
-            return redirect('beranda');
-        }else{
+        if(!Auth::check()){
             return view('livewire.login-user');
+        }else{
+            redirect('beranda');
         }
     }
 }

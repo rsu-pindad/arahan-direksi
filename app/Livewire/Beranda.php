@@ -7,15 +7,15 @@ use Livewire\Component;
 
 class Beranda extends Component
 {
-    public function render()
-    {
-        // if(auth()->check()){
-        if(Auth::check()){
-            return view('livewire.beranda');
-        }else{
-            redirect('login');
-        }
-    }
+    // public function render()
+    // {
+    //     // if(auth()->check()){
+    //     if(Auth::check()){
+    //         return view('livewire.beranda');
+    //     }else{
+    //         redirect('login');
+    //     }
+    // }
 
     public function pic()
     {
