@@ -34,6 +34,7 @@ class Pic extends Component
     
                 if($pic == true){
                     session()->flash('success', 'nama level pic berhasil di buat');
+                    $this->reset();
                 }else{
                     session()->flash('failure', 'terjadi kesalahan');
                 }
