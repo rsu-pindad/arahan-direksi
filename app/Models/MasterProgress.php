@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class MasterProgress extends Model
 {
     use HasFactory;
+
+    protected $tables = 'master_progress';
+
+    protected $guarded = ['id'];
+
+    protected $fillable = [
+        'status_progress',
+    ];
+
 }
