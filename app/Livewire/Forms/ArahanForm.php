@@ -46,7 +46,6 @@ class ArahanForm extends Form
         try {
             $this->validate();
             Arahan::updateOrCreate(
-                // $this->all()
                 $this->only([
                     'user_profile_id',
                     'nama_arahan',
