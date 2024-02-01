@@ -10,6 +10,8 @@ use App\Livewire\Pic\Pic;
 use App\Livewire\Profile\UserProfile;
 use App\Livewire\Progress\Progress;
 use App\Livewire\Progress\ProgressArahan;
+use App\Livewire\Progress\ProgressArahanOpen;
+use App\Livewire\Arahan\AssignArahan;
 use App\Livewire\Arahan\Arahan;
 
 /*
@@ -38,8 +40,14 @@ Route::get('/profile', UserProfile::class);
 
 // Master Progress
 Route::get('/progress', Progress::class);
+// Route::get('/progress-table', ProgressTable::class);
 
 // Master Arahan
 Route::get('/arahan', Arahan::class);
 
+// Progress Arahan
 Route::get('/progress-arahan', ProgressArahan::class);
+Route::get('/progress-arahan/{id}', ProgressArahanOpen::class);
+
+// Assign Arahan
+Route::get('/assign-arahan', AssignArahan::class);
