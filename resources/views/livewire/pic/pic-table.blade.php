@@ -2,9 +2,9 @@
     <!-- Table  -->
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">Level PIC</h3>&nbsp;
+                    <h3 class="card-title">Tabel Level PIC</h3>&nbsp;
                     <a hre="#" class="btn btn-sm btn-success" wire:click="$refresh">
                     <i class="fas fa-sync"></i>
                     </a>

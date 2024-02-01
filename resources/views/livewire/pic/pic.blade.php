@@ -3,14 +3,9 @@
       <section class="content-header">
          <div class="container-fluid">
             <div class="row mb-2">
-               <div class="col-sm-6">
-                  <h1>PIC</h1>
-               </div>
-               <div class="col-sm-6">
+               <div class="col-12">
                   <ol class="breadcrumb float-sm-right">
-                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                     <li class="breadcrumb-item"><a href="#">Layout</a></li>
-                     <li class="breadcrumb-item active">Collapsed Sidebar</li>
+                     <li class="breadcrumb-item active">PIC</li>
                   </ol>
                </div>
             </div>
@@ -20,7 +15,7 @@
          <div class="container-fluid">
             <div class="row">
                <div class="col-12">
-                  <div class="card">
+                  <div class="card card-secondary card-outline">
                      <div class="card-header">
                         <h3 class="card-title">Level PIC</h3>
                         <div class="card-tools">
@@ -46,12 +41,11 @@
                         </form>
                      </div>
                      <div class="card-footer">
-                        @if(session('success'))
+                        @if(session()->has('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
                             </div>
-                        @endif
-                        @if(session('failure'))
+                        @elseif(session()->has('failure'))
                             <div class="alert alert-danger">
                                 {{ session('failure') }}
                             </div>

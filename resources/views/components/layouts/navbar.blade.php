@@ -6,7 +6,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout" role="button" wire:navigate>Keluar</a>
+                        <a class="nav-link" href="/logout" role="button" wire:navigate wire:confirm="Are you sure you want to delete this post?">Keluar</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
