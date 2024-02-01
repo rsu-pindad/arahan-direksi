@@ -30,4 +30,9 @@ class UserProfile extends Model
         return $this->belongsTo(MasterPic::class, 'pic_id');
     }
 
+    public function arahans()
+    {
+        return $this->hasMany(MasterArahan::class, 'user_profile_id','id');
+    }
+
 }
