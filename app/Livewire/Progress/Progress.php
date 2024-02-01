@@ -16,15 +16,15 @@ class Progress extends Component
     {
         try { 
             $this->validate();
-            $picExists = MasterProgress::where('status_progress', $this->status_progress)->exists();
-            if($picExists){
+            $progExists = MasterProgress::where('status_progress', $this->status_progress)->exists();
+            if($progExists){
                 session()->flash('failure', 'nama progress sudah ada');
             }else{
-                $pic = MasterProgress::create(
+                $prog = MasterProgress::updateOrCreate(
                     $this->only(['status_progress'])
                 );
     
-                if($pic == true){
+                if($prog == true){
                     session()->flash('success', 'nama progress berhasil di buat');
                     $this->reset();
                 }else{

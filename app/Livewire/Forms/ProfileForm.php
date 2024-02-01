@@ -18,6 +18,15 @@ class ProfileForm extends Form
     public $nomor_handphone_profile = '';
     public $email = '';
 
+    // public function mount()
+    // {
+    //     $profiles = Profile::firstWhere('user_id', auth()->user()->id); 
+    //     $this->pic_id = $profiles->pic_id ?? '';
+    //     $this->nama_profile = $profiles->nama_profile ?? '';
+    //     $this->nomor_handphone_profile = $profiles->nomor_handphone_profile ?? '';
+    //     $this->email = $profiles->email ?? '';
+    // }
+
     public function rules()
     {
         return [

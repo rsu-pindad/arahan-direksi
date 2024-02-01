@@ -26,7 +26,7 @@ class Pic extends Component
             if($picExists){
                 session()->flash('failure', 'nama level pic sudah ada');
             }else{
-                $pic = MasterPic::create(
+                $pic = MasterPic::updateOrCreate(
                     $this->only([
                         'nama_pic',
                         'level_pic'])
