@@ -27,7 +27,7 @@ class ProgressTable extends DataTableComponent
             Column::make("status", "status_progress")
                 ->sortable()
                 ->searchable(),
-            DateColumn::make("Created at", "created_at")
+            DateColumn::make("dibuat", "created_at")
                 ->outputFormat('Y-m-d'),
         ];
     }

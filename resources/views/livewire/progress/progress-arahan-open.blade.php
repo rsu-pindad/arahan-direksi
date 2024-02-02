@@ -21,6 +21,9 @@
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
                     <div class="row">
+                        <h4>{{$arahan->nama_arahan}}</h4>
+                    </div>
+                    <div class="row">
                         <div class="col-12 col-sm-4">
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
@@ -41,7 +44,12 @@
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
                                 <span class="info-box-text text-center text-muted">Sisa Hari</span>
-                                <span class="info-box-number text-center text-muted mb-0">20</span>
+                                @php
+                                    $target = Carbon::parse($arahan->target_selesai);
+                                    $nows = Carbon::now();
+                                    $deadline = $target->diffInDays($nows);
+                                @endphp
+                                <span class="info-box-number text-center text-muted mb-0">{{$deadline}}</span>
                                 </div>
                             </div>
                         </div>

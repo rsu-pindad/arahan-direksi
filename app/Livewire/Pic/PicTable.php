@@ -20,12 +20,12 @@ class PicTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Nama pic", "nama_pic")
+            Column::make("nama", "nama_pic")
                 ->sortable()
                 ->searchable(),
-            Column::make("Level pic", "level_pic")
+            Column::make("level", "level_pic")
                 ->sortable(),
-            DateColumn::make("Created at", "created_at")
+            DateColumn::make("dibuat", "created_at")
                 ->outputFormat('Y-m-d'),
         ];
     }
