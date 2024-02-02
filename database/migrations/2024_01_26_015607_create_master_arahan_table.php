@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama_arahan')->nullable();
             $table->string('output_arahan')->nullable();
             $table->date('target_selesai')->nullable();
+            $table->boolean('assign_status')->default(false);
 
             // $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate();
             $table->foreign('user_profile_id')->references('id')->on('user_profile')->cascadeOnUpdate();

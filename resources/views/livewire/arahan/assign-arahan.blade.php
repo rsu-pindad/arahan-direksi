@@ -30,8 +30,8 @@
                               <label for="arahan_id">Arahan</label>
                               <select wire:model.lazy="form.arahan_id" class="custom-select rounded-0">
                                  <option readonly selected>pilih deskripsi arahan</option>
-                                 @foreach(\App\Models\MasterArahan::all() as $ar)
-                                 <option value="{{$ar->id}}">{{$ar->nama_arahan}}</option>
+                                 @foreach(\App\Models\MasterArahan::where('assign_status', 0)->get() as $ar)
+                                       <option value="{{$ar->id}}">{{$ar->nama_arahan}}</option>
                                  @endforeach
                               </select>
                               @error('form.arahan_id') <div class="alert alert-danger">{{ $message }}</div> @enderror 

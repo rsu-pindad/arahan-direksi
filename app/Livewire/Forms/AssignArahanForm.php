@@ -6,6 +6,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Form;
 use Illuminate\Validation\Rule;
 use App\Models\PivotArahanProgress As Pivot;
+use App\Models\MasterArahan As Arahan;
 
 
 class AssignArahanForm extends Form
@@ -14,6 +15,7 @@ class AssignArahanForm extends Form
 
     public $arahan_id = '';
     public $progress_id = '';
+    public $findIdArahan = '';
 
     public function rules()
     {
@@ -39,10 +41,12 @@ class AssignArahanForm extends Form
         try {
             $this->validate();
             // dd($this->validate());
+            Arahan::where('id', $this->arahan_id)->update(['assign_status' => true]);
+
             Pivot::updateOrCreate(
                 $this->only([
                     'arahan_id',
-                    'progress_id'
+                    'progress_id',
                 ])
             );
             $this->reset();

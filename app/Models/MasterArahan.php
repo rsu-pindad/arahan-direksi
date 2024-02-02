@@ -18,6 +18,7 @@ class MasterArahan extends Model
         'nama_arahan',
         'output_arahan',
         'target_selesai',
+        'assign_status',
     ];
 
     public function user_profile(){
