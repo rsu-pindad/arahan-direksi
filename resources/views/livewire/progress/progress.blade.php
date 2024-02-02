@@ -5,7 +5,12 @@
             <div class="row mb-2">
                <div class="col-12">
                   <ol class="breadcrumb float-sm-right">
-                     <li class="breadcrumb-item active">Progress</li>
+                    <li class="breadcrumb-item active">
+                        Progress
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/table/progress" wire:navigate>Tabel Progress</a>
+                    </li>
                   </ol>
                </div>
             </div>

@@ -15,7 +15,7 @@ class Pic extends Component
     public $level_pic = '';
     
     #[Validate('required', message:'mohon isi keterangan pic',translate:false)]
-    #[Validate('min:3', message:'keterangan kurang dari 3', translate:false)]
+    #[Validate('min:2', message:'keterangan kurang dari 2', translate:false)]
     public $nama_pic = '';
 
     public function save()

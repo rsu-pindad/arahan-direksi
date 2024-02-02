@@ -4,6 +4,7 @@
 /public/hot
 /public/storage
 /public/vendor
+/resources/views/livewire/datatables
 /lang/
 /storage/*.key
 /vendor

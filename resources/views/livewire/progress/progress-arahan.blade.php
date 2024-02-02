@@ -13,7 +13,9 @@
       </section>
       <section class="content">
         <div class="container-fluid">
-        @foreach($progress as $p)
+            @use('Illuminate\Support\Str')
+            @use('Carbon\Carbon')
+            @foreach($progress as $p)
             <div class="card card-row card-primary" wire:key="{{ $p->id }}">
                 <div class="card-header">
                     <h3 class="card-title">
@@ -21,17 +23,41 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <div class="card card-primary card-outline">
+                @foreach(\App\Models\PivotArahanProgress::all() as $piv)
+                    @if($piv->progress_id == $p->id)
+                    <div class="card card-primary card-outline" wire:key="{{ $piv->id }}">
+                        <a href="/progress-arahan/{{$piv->arahan->id}}" wire.navigate>
                         <div class="card-header">
-                            <h5 class="card-title">Create first milestone</h5>
+                            <h5 class="card-title">{{ Str::limit($piv->arahan->nama_arahan,15) }}</h5>
                             <div class="card-tools">
-                            <a href="#" class="btn btn-tool btn-link">#5</a>
+                            <a href="#" class="btn btn-tool btn-link">#</a>
                             <a href="#" class="btn btn-tool">
                             <i class="fas fa-pen"></i>
                             </a>
                             </div>
                         </div>
+                        </a>
+                        
+                        <div class="card-body">
+                            <p class="lead text-truncate">{{ $piv->arahan->output_arahan }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div>
+                                Target&nbsp;:&nbsp;
+                                @if($piv->arahan->target_selesai > Carbon::now())
+                                    {{Carbon::parse($piv->arahan->target_selesai)->diffForHumans()}}
+                                @else
+                                    @if($piv->progress->status_progress == "done")
+                                        Ok
+                                    @else
+                                        Melebihi target
+                                    @endif
+                                @endif
+                            </div>
+                        </div>
                     </div>
+                    @endif
+                @endforeach
                 </div>
             </div>
             @endforeach

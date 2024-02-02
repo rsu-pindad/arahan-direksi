@@ -1,11 +1,11 @@
 <!-- Template -->
-   <div class="content-wrapper">
+<div class="content-wrapper">
       <section class="content-header">
          <div class="container-fluid">
             <div class="row mb-2">
                <div class="col-12">
                   <ol class="breadcrumb float-sm-right">
-                     <li class="breadcrumb-item active">PIC</li>
+                     <li class="breadcrumb-item active">Assign Arahan</li>
                   </ol>
                </div>
             </div>
@@ -17,27 +17,36 @@
                <div class="col-12">
                   <div class="card card-secondary card-outline">
                      <div class="card-header">
-                        <h3 class="card-title">Level PIC</h3>
+                        <h3 class="card-title">Assign Arahan</h3>
                         <div class="card-tools">
                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                            <i class="fas fa-minus"></i>
-                           </button>
-                           <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                           <i class="fas fa-times"></i>
                            </button>
                         </div>
                      </div>
                      <div class="card-body">
                         <form wire:submit="save">
                             <div class="form-group">
-                            <input type="number" placeholder="masukan nomor level" min="1" max="6" class="form-control" wire:model="level_pic" place>
-                                @error('level_pic') <p class="error">{{ $message }}</p> @enderror     
+                              <label for="arahan_id">Arahan</label>
+                              <select wire:model.lazy="form.arahan_id" class="custom-select rounded-0">
+                                 <option readonly selected>pilih deskripsi arahan</option>
+                                 @foreach(\App\Models\MasterArahan::where('assign_status', 0)->get() as $ar)
+                                       <option value="{{$ar->id}}">{{$ar->nama_arahan}}</option>
+                                 @endforeach
+                              </select>
+                              @error('form.arahan_id') <div class="alert alert-danger">{{ $message }}</div> @enderror 
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="masukan nama level pic" class="form-control" wire:model="nama_pic">
-                                @error('nama_pic') <p class="error">{{ $message }}</p> @enderror
+                              <label for="progress_id">Pilih Progress</label>
+                              <select wire:model.lazy="form.progress_id" class="custom-select rounded-0">
+                                 <option readonly selected>pilih Progress</option>
+                                 @foreach(\App\Models\MasterProgress::all() as $pro)
+                                 <option value="{{$pro->id}}">{{$pro->status_progress}}</option>
+                                 @endforeach
+                              </select>
+                              @error('form.progress_id') <div class="alert alert-danger">{{ $message }}</div> @enderror 
                             </div>
-                            <button class="btn btn-primary" type="submit">simpan</button>
+                            <button class="btn btn-primary" type="submit">Assign</button>
                         </form>
                      </div>
                      <div class="card-footer">
@@ -50,13 +59,13 @@
                         </div>
                      </div>
                      @elseif(session()->has('failure'))
-                     <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
+                     <!-- <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show"> -->
                         <div class="alert alert-danger alert-dismissible">
                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                            <h5><i class="icon fas fa-ban"></i></h5>
                            {{ session('failure') }}
                         </div>
-                     </div>
+                     <!-- </div> -->
                      @endif
                      </div>
                   </div>

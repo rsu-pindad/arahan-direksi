@@ -38,7 +38,7 @@
                            </div>
                            <div class="form-group">
                               <label for="user_profile_id">Pilih User</label>
-                              <select wire:model.lazy="form.user_profile_id" class="custom-select rounded-0" wire:key="{{ $select_pic }}">
+                              <select wire:model.live="form.user_profile_id" class="custom-select rounded-0" wire:key="{{ $select_pic }}">
                                  <option readonly selected>pilih user</option>
                                  @foreach(\App\Models\UserProfile::where('pic_id', $select_pic)->get() as $up)
                                  <option value="{{$up->id}}">{{$up->nama_profile}}</option>

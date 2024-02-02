@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class PivotArahanProgress extends Model
 {
     use HasFactory;
 
-    protected $tables = 'master_arahan';
+    protected $table = 'pivot_ap';
+    protected $guarded = ['id'];
 
     protected $fillable = [
         'arahan_id',
@@ -23,4 +25,5 @@ class PivotArahanProgress extends Model
     public function progress(){
         return $this->belongsTo(MasterProgress::class, 'progress_id');
     }
+
 }
