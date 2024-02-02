@@ -27,9 +27,10 @@ class LoginUser extends Component
             'password' => $this->password
         ])){
             Session::regenerate();
+            session()->flash('success', 'selamat datang kembali');
             // $this->session()->regenerate();
             return redirect('beranda');
-            redirect('beranda');
+            // redirect('beranda');
             // $this->redirect(Beranda::class);
         }else{
             // return $this->validate();
