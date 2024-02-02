@@ -7,10 +7,13 @@ use App\Livewire\Beranda;
 use App\Livewire\LoginUser;
 use App\Livewire\RegisterUser;
 use App\Livewire\Pic\Pic;
+use App\Livewire\Pic\ViewTables as TablePic;
 use App\Livewire\Profile\UserProfile;
+use App\Livewire\Profile\ViewTables as TableProfile;
 use App\Livewire\Progress\Progress;
 use App\Livewire\Progress\ProgressArahan;
 use App\Livewire\Progress\ProgressArahanOpen;
+use App\Livewire\Progress\ViewTables as TableProgress;
 use App\Livewire\Arahan\AssignArahan;
 use App\Livewire\Arahan\Arahan;
 
@@ -34,13 +37,15 @@ Route::get('/register', RegisterUser::class)->name('register');
 
 // PIC 
 Route::get('/pic', Pic::class);
+Route::get('/table/pic', TablePic::class);
 
 // User Profiel
 Route::get('/profile', UserProfile::class);
+Route::get('/table/profile', TableProfile::class);
 
 // Master Progress
 Route::get('/progress', Progress::class);
-// Route::get('/progress-table', ProgressTable::class);
+Route::get('/table/progress', TableProgress::class);
 
 // Master Arahan
 Route::get('/arahan', Arahan::class);

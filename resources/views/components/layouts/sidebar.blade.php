@@ -48,7 +48,7 @@
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a wire:navigate href="/progress-table" class="nav-link">
+                        <a wire:navigate href="/table/progress" class="nav-link">
                            <i class="far fa-circle nav-icon"></i>
                            <p>Tabel Progress</p>
                         </a>
@@ -68,6 +68,12 @@
                         <a wire:navigate href="/pic" class="nav-link">
                            <i class="far fa-circle nav-icon"></i>
                            <p>Data PIC</p>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a wire:navigate href="/table/pic" class="nav-link">
+                           <i class="far fa-circle nav-icon"></i>
+                           <p>Tabel PIC</p>
                         </a>
                      </li>
                   </ul>

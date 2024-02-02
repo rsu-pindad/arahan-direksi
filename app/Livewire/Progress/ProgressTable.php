@@ -1,30 +1,32 @@
 <?php
 
-namespace App\Livewire\Pic;
+namespace App\Livewire\Progress;
 
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Columns\{DateColumn};
-use App\Models\MasterPic;
+use App\Models\MasterProgress;
 
-class PicTable extends DataTableComponent
+class ProgressTable extends DataTableComponent
 {
-    protected $model = MasterPic::class;
+    protected $model = MasterProgress::class;
+
+    public $columnSearch = [
+        'status_progress' => null,
+    ];
 
     public function configure(): void
     {
         $this->setPrimaryKey('id');
-        // $this->setDefaultSort('level_pic', 'desc');
+        $this->setDefaultSort('status_progress', 'desc');
     }
 
     public function columns(): array
     {
         return [
-            Column::make("Nama pic", "nama_pic")
+            Column::make("status", "status_progress")
                 ->sortable()
                 ->searchable(),
-            Column::make("Level pic", "level_pic")
-                ->sortable(),
             DateColumn::make("Created at", "created_at")
                 ->outputFormat('Y-m-d'),
         ];
