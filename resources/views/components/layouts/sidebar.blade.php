@@ -15,7 +15,10 @@
          <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                <li class="nav-header">MASTER</li>
-               <li class="nav-item">
+
+               <li 
+                  class="nav-item 
+                  {{ Route::is('arahan') ? 'menu-is-opening menu-open' : '' }}">
                   <a href="#" class="nav-link">
                      <i class="nav-icon far fa-envelope"></i>
                      <p>
@@ -25,14 +28,22 @@
                   </a>
                   <ul class="nav nav-treeview">
                      <li class="nav-item">
-                        <a wire:navigate href="/arahan" class="nav-link">
+                        <a 
+                           href="/arahan" 
+                           class="nav-link {{ Route::is('arahan') ? 'active' : '' }}"
+                           wire:navigate>
                            <i class="far fa-circle nav-icon"></i>
                            <p>Data Deskripsi Arahan</p>
                         </a>
                      </li>
                   </ul>
                </li>
-               <li class="nav-item">
+
+               @if(Route::is('progress') or Route::is('progress-table'))
+                  <li class="nav-item menu-is-opening menu-open">
+                  @else
+                  <li class="nav-item">
+               @endif
                   <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-tasks"></i>
                      <p>
@@ -42,20 +53,30 @@
                   </a>
                   <ul class="nav nav-treeview">
                      <li class="nav-item">
-                        <a wire:navigate href="/progress" class="nav-link">
+                        <a  
+                           href="/progress" 
+                           class="nav-link {{ Route::is('progress') ? 'active' : '' }}"
+                           wire:navigate>
                            <i class="far fa-circle nav-icon"></i>
                            <p>Data Progress</p>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a wire:navigate href="/table/progress" class="nav-link">
+                        <a 
+                           href="/progress/table" 
+                           class="nav-link {{ Route::is('progress-table') ? 'active' : '' }}"
+                           wire:navigate>
                            <i class="far fa-circle nav-icon"></i>
                            <p>Tabel Progress</p>
                         </a>
                      </li>
                   </ul>
                </li>
-               <li class="nav-item">
+               @if(Route::is('pic') or Route::is('pic-table'))
+                  <li class="nav-item menu-is-opening menu-open">
+                  @else
+                  <li class="nav-item">
+               @endif
                   <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-user-tag"></i>
                      <p>
@@ -65,13 +86,19 @@
                   </a>
                   <ul class="nav nav-treeview">
                      <li class="nav-item">
-                        <a wire:navigate href="/pic" class="nav-link">
+                        <a  
+                           href="/pic" 
+                           class="nav-link {{ Route::is('pic') ? 'active' : '' }}"
+                           wire:navigate>
                            <i class="far fa-circle nav-icon"></i>
                            <p>Data PIC</p>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a wire:navigate href="/table/pic" class="nav-link">
+                        <a 
+                           href="/pic/table" 
+                           class="nav-link {{ Route::is('pic-table') ? 'active' : '' }}"
+                           wire:navigate>
                            <i class="far fa-circle nav-icon"></i>
                            <p>Tabel PIC</p>
                         </a>
@@ -79,7 +106,7 @@
                   </ul>
                </li>
                <li class="nav-header">TUGAS</li>
-               <li class="nav-item">
+               <li class="nav-item {{ Route::is('assign-arahan') ? 'menu-is-opening menu-open' : '' }}">
                   <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-paper-plane"></i>
                      <p>
@@ -89,7 +116,10 @@
                   </a>
                   <ul class="nav nav-treeview">
                      <li class="nav-item">
-                        <a wire:navigate href="/assign-arahan" class="nav-link">
+                        <a 
+                           href="/assign-arahan" 
+                           class="nav-link {{ Route::is('assign-arahan') ? 'active' : '' }}"
+                           wire:navigate>
                            <i class="far fa-circle nav-icon"></i>
                            <p>Data Assign Arahan</p>
                         </a>
@@ -98,7 +128,10 @@
                </li>
                <li class="nav-header">MONITOR</li>
                <li class="nav-item">
-                  <a href="/progress-arahan" class="nav-link" wire:navigate>
+                  <a 
+                     href="/progress-arahan" 
+                     class="nav-link {{ Route::is('progress-arahan') ? 'active' : '' }}" 
+                     wire:navigate>
                      <i class="nav-icon fas fa-mail-bulk"></i>
                      <p>
                         Progress Arahan

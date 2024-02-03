@@ -1,4 +1,3 @@
-<x-layouts.app>
 <!-- Template -->
    <div class="content-wrapper">
       <section class="content-header">
@@ -46,4 +45,3 @@
       </section>
    </div>
 <!-- End Template -->
-</x-layouts.app>
