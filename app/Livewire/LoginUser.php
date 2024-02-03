@@ -4,10 +4,11 @@ namespace App\Livewire;
 
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+// use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\Beranda as Beranda;
 use Session;
-use Hash;
+// use Hash;
 
 class LoginUser extends Component
 {
@@ -20,21 +21,20 @@ class LoginUser extends Component
 
     public function login()
     {
-        $this->validate();
-        // if(auth()->attempt([
-        if(Auth::attempt([
-            'npp' => $this->npp,
-            'password' => $this->password
-        ])){
-            Session::regenerate();
-            session()->flash('success', 'selamat datang kembali');
-            // $this->session()->regenerate();
-            return redirect('beranda');
-            // redirect('beranda');
-            // $this->redirect(Beranda::class);
-        }else{
-            // return $this->validate();
-            session()->flash('failure', 'npp atau password salah');
+        try {    
+            $this->validate();
+            if(Auth::attempt([
+                'npp' => $this->npp,
+                'password' => $this->password
+            ])){
+                Session::regenerate();
+                session()->flash('success', 'selamat datang kembali');
+                return redirect('beranda');
+            }else{
+                session()->flash('failure', 'npp atau password salah');
+            }
+        } catch (\Illuminate\Database\QueryException $exception) {
+            return $exception->getMessage();
         }
     }
 
@@ -51,7 +51,7 @@ class LoginUser extends Component
         if(!Auth::check()){
             return view('livewire.login-user');
         }else{
-            redirect('beranda');
+            $this->redirect('beranda');
         }
     }
 }
