@@ -4,36 +4,33 @@
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout" role="button" wire:navigate wire:confirm="Are you sure you want to delete this post?">Keluar</a>
-                    </li>
-                </ul>
                 <ul class="navbar-nav ml-auto">
+                    @include('components.layouts.notif')
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
+                            <i class="fas fa-user-cog"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+                            <div class="dropdown-divider"></div>
+                            <a 
+                                href="/profile" 
+                                class="dropdown-item" 
+                                wire:navigate>
+                                <i class="fas fa-user-edit"></i>
+                                <span class="float-right text-muted text-sm">Profile</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a 
+                                class="dropdown-item" 
+                                href="/logout" 
+                                role="button" 
+                                wire:navigate 
+                                wire:confirm="Are you sure you want to delete this post?">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span class="float-right text-muted text-sm">Keluar</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item dropdown-footer">{{ auth()->user()->npp ?? '' }}</a>
                         </div>
                     </li>
                 </ul>
