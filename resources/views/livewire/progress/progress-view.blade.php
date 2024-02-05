@@ -1,5 +1,5 @@
 <!-- Template -->
-    <div class="content-wrapper">
+<div class="content-wrapper">
       <section class="content-header">
          <div class="container-fluid">
             <div class="row mb-2">
@@ -30,21 +30,15 @@
                         </div>
                      </div>
                      <div class="card-body">
-                        <form 
-                           wire:submit.prevent="save">
-                            <div class="form-group">
-                              <input 
-                                 type="text" 
-                                 placeholder="masukan nama progress" 
-                                 class="form-control" 
-                                 wire:model="status_progress">
-                                @error('status_progress') <p class="error">{{ $message }}</p> @enderror     
-                            </div>
-                            <button class="btn btn-primary" type="submit">simpan</button>
-                        </form>
+                        <p>
+                            {{$progress->status_progress}}
+                        </p>
                      </div>
-                     <div class="card-footer">
-                        @include('components.alert.alert-timeout-custom')
+                     <div class="card-footer clearfix">
+                     <ul class="pagination pagination-sm m-0 float-right">
+                            <li class="page-item"><a class="page-link" href="{{$previous}}" wire:navigate>«</a></li>
+                            <li class="page-item"><a class="page-link" href="{{$next}}" wire:navigate>»</a></li>
+                        </ul>
                      </div>
                   </div>
                </div>

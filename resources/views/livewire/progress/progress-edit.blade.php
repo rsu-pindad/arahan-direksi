@@ -1,5 +1,5 @@
 <!-- Template -->
-    <div class="content-wrapper">
+<div class="content-wrapper">
       <section class="content-header">
          <div class="container-fluid">
             <div class="row mb-2">
@@ -31,16 +31,24 @@
                      </div>
                      <div class="card-body">
                         <form 
-                           wire:submit.prevent="save">
+                           wire:submit.prevent="update">
+                           <input 
+                              type="hidden"
+                              value="{{$this->progress_id}}"
+                              wire:model="progress_id"
+                              >
                             <div class="form-group">
                               <input 
                                  type="text" 
+                                 value="{{$this->status_progress}}"
                                  placeholder="masukan nama progress" 
                                  class="form-control" 
                                  wire:model="status_progress">
                                 @error('status_progress') <p class="error">{{ $message }}</p> @enderror     
                             </div>
-                            <button class="btn btn-primary" type="submit">simpan</button>
+                              <button class="btn btn-primary" type="submit">
+                              perbarui
+                              </button>
                         </form>
                      </div>
                      <div class="card-footer">

@@ -1,5 +1,5 @@
 <!-- Template -->
-<div class="content-wrapper">
+   <div class="content-wrapper"> 
       <section class="content-header">
          <div class="container-fluid">
             <div class="row mb-2">
@@ -22,7 +22,11 @@
                <div class="col-12">
                   <div class="card card-primary card-outline">
                      <div class="card-body">
-                        <livewire:pic.pictable/>
+                        @livewire('pic.pictable', [
+                           'lazy' => true,
+                           'navigate' => true,
+                           ])
+                        <!-- <livewire:pic.pictable lazy /> -->
                      </div>
                   </div>
                </div>

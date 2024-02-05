@@ -6,14 +6,23 @@ use App\Http\Controllers\BerandaController;
 use App\Livewire\Beranda;
 use App\Livewire\LoginUser;
 use App\Livewire\RegisterUser;
+
 use App\Livewire\Pic\Pic;
+use App\Livewire\Pic\PicView;
+use App\Livewire\Pic\PicEdit;
 use App\Livewire\Pic\ViewTables as TablePic;
+
 use App\Livewire\Profile\UserProfile;
 use App\Livewire\Profile\ViewTables as TableProfile;
+
 use App\Livewire\Progress\Progress;
+use App\Livewire\Progress\ProgressEdit;
+use App\Livewire\Progress\ProgressView;
+
 use App\Livewire\Progress\ProgressArahan;
 use App\Livewire\Progress\ProgressArahanOpen;
 use App\Livewire\Progress\ViewTables as TableProgress;
+
 use App\Livewire\Arahan\AssignArahan;
 use App\Livewire\Arahan\Arahan;
 
@@ -28,8 +37,6 @@ use App\Livewire\Arahan\Arahan;
 |
 */
 
-// Route::get('/', [Beranda::class, 'render'])->name('beranda');
-// Route::get('/beranda', [BerandaController::class, 'render']);
 Route::get('/', [BerandaController::class, 'render'])->name('beranda');
 Route::get('/beranda', Beranda::class);
 
@@ -41,6 +48,8 @@ Route::get('/register', RegisterUser::class)->name('register');
 // PIC 
 Route::get('/pic', Pic::class)->name('pic');
 Route::get('/pic/table', TablePic::class)->name('pic-table');
+Route::get('/pic/view/{id}', PicView::class)->name('pic-view');
+Route::get('/pic/edit/{id}', PicEdit::class)->name('pic-edit');
 
 // User Profile
 Route::get('/profile', UserProfile::class)->name('profile');
@@ -48,6 +57,8 @@ Route::get('/profile/table', TableProfile::class)->name('profile-table');
 
 // Master Progress
 Route::get('/progress', Progress::class)->name('progress');
+Route::get('/progress/view/{id}', ProgressView::class)->name('progress-view');
+Route::get('/progress/edit/{id}', ProgressEdit::class)->name('progress-edit');
 Route::get('/progress/table', TableProgress::class)->name('progress-table');
 
 // Master Arahan

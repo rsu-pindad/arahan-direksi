@@ -6,13 +6,24 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 use App\Models\MasterProgress;
 
-class Progress extends Component
+class ProgressEdit extends Component
 {
+    public MasterProgress $progress;
+    public $has_progress = '';
+    public $progress_id = '';
+    
     #[Validate('required', message:'mohon isi nama progress',translate:false)]
     #[Validate('min:3', message:'nama progress kurang dari 3', translate:false)]
     public $status_progress = '';
 
-    public function save()
+    public function mount($id)
+    {
+        $has_progress = MasterProgress::where('id', $id)->first();
+        $this->progress_id = $has_progress->id;
+        $this->status_progress = $has_progress->status_progress;
+    }
+
+    public function update()
     {
         try { 
             $this->validate();
@@ -20,7 +31,7 @@ class Progress extends Component
             if($progExists){
                 session()->flash('failure', 'nama progress sudah ada');
             }else{
-                $prog = MasterProgress::updateOrCreate(
+                $prog = MasterProgress::where('id', $this->progress_id)->update(
                     $this->only(['status_progress'])
                 );
     
@@ -39,6 +50,6 @@ class Progress extends Component
 
     public function render()
     {
-        return view('livewire.progress.progress');
+        return view('livewire.progress.progress-edit');
     }
 }
