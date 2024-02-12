@@ -23,8 +23,9 @@ use App\Livewire\Progress\ProgressArahan;
 use App\Livewire\Progress\ProgressArahanOpen;
 use App\Livewire\Progress\ViewTables as TableProgress;
 
-use App\Livewire\Arahan\AssignArahan;
 use App\Livewire\Arahan\Arahan;
+use App\Livewire\Arahan\AssignArahan;
+use App\Livewire\Arahan\StepperArahan;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,12 @@ use App\Livewire\Arahan\Arahan;
 |
 */
 
-Route::get('/', [BerandaController::class, 'render'])->name('beranda');
-Route::get('/beranda', Beranda::class);
+// Route::get('/', [BerandaController::class, 'render'])->name('beranda');
+
+Route::get('/', function(){
+    return Redirect::intended('/login');
+});
+Route::get('/beranda', Beranda::class)->name('beranda');
 
 // user auth
 Route::get('/login', LoginUser::class)->name('login');
@@ -62,7 +67,8 @@ Route::get('/progress/edit/{id}', ProgressEdit::class)->name('progress-edit');
 Route::get('/progress/table', TableProgress::class)->name('progress-table');
 
 // Master Arahan
-Route::get('/arahan', Arahan::class)->name('arahan');
+// Route::get('/arahan', Arahan::class)->name('arahan');
+Route::get('/arahan', StepperArahan::class)->name('arahan');
 
 // Assign Arahan / kanban arahan
 Route::get('/assign-arahan', AssignArahan::class)->name('assign-arahan');

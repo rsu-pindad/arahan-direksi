@@ -1,5 +1,5 @@
-<!-- Template -->
-<div class="content-wrapper">
+   <!-- Template -->
+   <div class="content-wrapper">
       <section class="content-header">
          <div class="container-fluid">
             <div class="row mb-2">
@@ -58,4 +58,4 @@
          </div>
       </section>
    </div>
-<!-- End Template -->
+   <!-- End Template -->

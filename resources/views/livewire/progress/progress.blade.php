@@ -1,5 +1,8 @@
 <!-- Template -->
    <div class="content-wrapper">
+      @push('scripts')
+         <script src="https://unpkg.com/vanilla-picker@2"></script>
+      @endpush
       <section class="content-header">
          <div class="container-fluid">
             <div class="row mb-2">
@@ -39,6 +42,9 @@
                                  class="form-control" 
                                  wire:model="status_progress">
                                 @error('status_progress') <p class="error">{{ $message }}</p> @enderror     
+                            </div>
+                            <div class="form-group">
+                              
                             </div>
                             <button class="btn btn-primary" type="submit">simpan</button>
                         </form>

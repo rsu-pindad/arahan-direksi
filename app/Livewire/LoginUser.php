@@ -51,7 +51,7 @@ class LoginUser extends Component
         if(!Auth::check()){
             return view('livewire.login-user');
         }else{
-            $this->redirect('beranda');
+            return $this->redirect('beranda');
         }
     }
 }

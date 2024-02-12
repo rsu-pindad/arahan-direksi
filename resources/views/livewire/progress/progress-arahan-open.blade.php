@@ -49,7 +49,7 @@
                                     $nows = Carbon::now();
                                     $deadline = $target->diffInDays($nows);
                                 @endphp
-                                <span class="info-box-number text-center text-muted mb-0">{{$deadline}}</span>
+                                    <span class="info-box-number text-center text-muted mb-0">{{$deadline}}</span>
                                 </div>
                             </div>
                         </div>

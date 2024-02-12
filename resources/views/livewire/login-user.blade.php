@@ -12,6 +12,7 @@
                             type="text" 
                             class="form-control" 
                             placeholder="npp" 
+                            autocomplete="off" 
                             wire:model="npp">   
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -29,6 +30,7 @@
                             type="password" 
                             class="form-control" 
                             placeholder="password" 
+                            autocomplete="off" 
                             wire:model="password">
                         <div class="input-group-append">
                             <div class="input-group-text">
