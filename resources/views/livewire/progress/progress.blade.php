@@ -1,5 +1,8 @@
 <!-- Template -->
-    <div class="content-wrapper">
+   <div class="content-wrapper">
+      @push('scripts')
+         <script src="https://unpkg.com/vanilla-picker@2"></script>
+      @endpush
       <section class="content-header">
          <div class="container-fluid">
             <div class="row mb-2">
@@ -30,32 +33,24 @@
                         </div>
                      </div>
                      <div class="card-body">
-                        <form wire:submit="save">
+                        <form 
+                           wire:submit.prevent="save">
                             <div class="form-group">
-                            <input type="text" placeholder="masukan nama progress" class="form-control" wire:model="status_progress">
+                              <input 
+                                 type="text" 
+                                 placeholder="masukan nama progress" 
+                                 class="form-control" 
+                                 wire:model="status_progress">
                                 @error('status_progress') <p class="error">{{ $message }}</p> @enderror     
+                            </div>
+                            <div class="form-group">
+                              
                             </div>
                             <button class="btn btn-primary" type="submit">simpan</button>
                         </form>
                      </div>
                      <div class="card-footer">
-                     @if(session()->has('success'))
-                     <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
-                        <div class="alert alert-success alert-dismissible">
-                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                           <h5><i class="icon fas fa-check"></i> </h5>
-                           {{ session('success') }}
-                        </div>
-                     </div>
-                     @elseif(session()->has('failure'))
-                     <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
-                        <div class="alert alert-danger alert-dismissible">
-                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                           <h5><i class="icon fas fa-ban"></i></h5>
-                           {{ session('failure') }}
-                        </div>
-                     </div>
-                     @endif
+                        @include('components.alert.alert-timeout-custom')
                      </div>
                   </div>
                </div>

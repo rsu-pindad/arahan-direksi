@@ -33,8 +33,7 @@ class Progress extends Component
             }
             
         } catch (\Illuminate\Database\QueryException $exception) {
-            $errorInfo = $exception->getMessage();
-            return $errorInfo;;
+            return $exception->getMessage();
         }
     }
 

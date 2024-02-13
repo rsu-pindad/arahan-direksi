@@ -41,9 +41,7 @@ class Pic extends Component
             }
             
         } catch (\Illuminate\Database\QueryException $exception) {
-            // $errorInfo = $exception->errorInfo;
-            $errorInfo = $exception->getMessage();
-            return $errorInfo;;
+            return $exception->getMessage();
         }
     }
 

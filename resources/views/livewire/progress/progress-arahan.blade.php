@@ -44,11 +44,15 @@
                         <div class="card-footer">
                             <div>
                                 Target&nbsp;:&nbsp;
-                                @if($piv->arahan->target_selesai > Carbon::now())
-                                    {{Carbon::parse($piv->arahan->target_selesai)->diffForHumans()}}
+                                @php
+                                    $now = Carbon::now();
+                                    $target = Carbon::parse($piv->arahan->target_selesai);
+                                @endphp
+                                @if( $target > Carbon::now())
+                                    {{$target->diffForHumans()}}
                                 @else
                                     @if($piv->progress->status_progress == "done")
-                                        Ok
+                                        Tercapai
                                     @else
                                         Melebihi target
                                     @endif

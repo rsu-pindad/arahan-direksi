@@ -29,19 +29,19 @@
                            <div class="form-group">
                               <label for="select_pic">Pilih Level PIC</label>
                               <select wire:model.live="select_pic" class="custom-select rounded-0">
-                                 <option readonly selected>pilih level pic</option>
+                                    <option readonly selected>pilih level pic</option>
                                  @foreach(\App\Models\MasterPic::all() as $pic)
-                                 <option value="{{$pic->id}}">{{$pic->nama_pic}}</option>
+                                    <option value="{{$pic->id}}">{{$pic->nama_pic}}</option>
                                  @endforeach
                               </select>
                               @error('form.pic_id') <div class="alert alert-danger">{{ $message }}</div> @enderror 
                            </div>
                            <div class="form-group">
-                              <label for="user_profile_id">Pilih User</label>
+                              <label for="user_profile_id">Pilih PIC</label>
                               <select wire:model.live="form.user_profile_id" class="custom-select rounded-0" wire:key="{{ $select_pic }}">
-                                 <option readonly selected>pilih user</option>
+                                    <option readonly selected>pilih pic</option>
                                  @foreach(\App\Models\UserProfile::where('pic_id', $select_pic)->get() as $up)
-                                 <option value="{{$up->id}}">{{$up->nama_profile}}</option>
+                                    <option value="{{$up->id}}">{{$up->nama_profile}}</option>
                                  @endforeach
                               </select>
                               @error('form.user_profile_id') <p class="alert alert-danger">{{ $message }}</p> @enderror 
@@ -65,23 +65,7 @@
                         </form>
                      </div>
                      <div class="card-footer">
-                     @if(session()->has('success'))
-                     <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
-                        <div class="alert alert-success alert-dismissible">
-                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                           <h5><i class="icon fas fa-check"></i> </h5>
-                           {{ session('success') }}
-                        </div>
-                     </div>
-                     @elseif(session()->has('failure'))
-                     <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
-                        <div class="alert alert-danger alert-dismissible">
-                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                           <h5><i class="icon fas fa-ban"></i></h5>
-                           {{ session('failure') }}
-                        </div>
-                     </div>
-                     @endif
+                        @include('components.alert.alert-timeout-custom')
                      </div>
                   </div>
                </div>

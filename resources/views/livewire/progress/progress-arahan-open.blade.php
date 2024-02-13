@@ -23,91 +23,47 @@
                     <div class="row">
                         <h4>{{$arahan->nama_arahan}}</h4>
                     </div>
+                    <div class="dropdown-divider"></div>
                     <div class="row">
                         <div class="col-12 col-sm-4">
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
                                 <span class="info-box-text text-center text-muted">Dibuat pada</span>
-                                <span class="info-box-number text-center text-muted mb-0">{{$arahan->created_at}}</span>
+                                <span class="info-box-number text-center text-muted mb-0">{{Carbon::parse($arahan->created_at)->diffForHumans()}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
-                                <span class="info-box-text text-center text-muted">Target Selesai</span>
-                                <span class="info-box-number text-center text-muted mb-0">{{$arahan->target_selesai}}</span>
+                                <span class="info-box-text text-center text-muted">Target selesai</span>
+                                <span class="info-box-number text-center text-muted mb-0">{{Carbon::parse($arahan->target_selesai)->diffForHumans()}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
-                                <span class="info-box-text text-center text-muted">Sisa Hari</span>
+                                <span class="info-box-text text-center text-muted">Sisa hari</span>
                                 @php
                                     $target = Carbon::parse($arahan->target_selesai);
                                     $nows = Carbon::now();
                                     $deadline = $target->diffInDays($nows);
                                 @endphp
-                                <span class="info-box-number text-center text-muted mb-0">{{$deadline}}</span>
+                                    <span class="info-box-number text-center text-muted mb-0">{{$deadline}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
+                            <div class="dropdown-divider"></div>
                             <h5>aktivitas arahan terbaru</h5>
-                            <div class="post">
-                                <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="https://api.dicebear.com/7.x/bottts/svg" alt="user image">
-                                <span class="username">
-                                <a href="#">Jonathan Burke Jr.</a>
-                                </span>
-                                <span class="description">Shared publicly - 7:45 PM today</span>
-                                </div>
-                                <p>
-                                Lorem ipsum represents a long-held tradition for designers,
-                                typographers and the like. Some people hate it and argue for
-                                its demise, but others ignore.
-                                </p>
-                                <p>
-                                <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
-                                </p>
-                            </div>
-                            <div class="post clearfix">
-                                <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="https://api.dicebear.com/7.x/adventurer/svg" alt="User Image">
-                                <span class="username">
-                                <a href="#">Sarah Ross</a>
-                                </span>
-                                <span class="description">Sent you a message - 3 days ago</span>
-                                </div>
-                                <p>
-                                Lorem ipsum represents a long-held tradition for designers,
-                                typographers and the like. Some people hate it and argue for
-                                its demise, but others ignore.
-                                </p>
-                                <p>
-                                <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 2</a>
-                                </p>
-                            </div>
-                            <div class="post">
-                                <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="https://api.dicebear.com/7.x/croodles/svg" alt="user image">
-                                <span class="username">
-                                <a href="#">Jonathan Burke Jr.</a>
-                                </span>
-                                <span class="description">Shared publicly - 5 days ago</span>
-                                </div>
-                                <p>
-                                Lorem ipsum represents a long-held tradition for designers,
-                                typographers and the like. Some people hate it and argue for
-                                its demise, but others ignore.
-                                </p>
-                                <p>
-                                <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v1</a>
-                                </p>
-                            </div>
+                            <div class="dropdown-divider"></div>
+                            @include('livewire.arahan.aktivitas.aktivitas-komentar')
+                            <h4>#</h4>
+                            <div class="dropdown-divider"></div>
+                            @include('livewire.arahan.aktivitas.arahan-aktivitas')
                         </div>
                     </div>
                     </div>
@@ -116,7 +72,7 @@
                     <p class="text-muted">{{$arahan->output_arahan}}</p>
                     <br>
                     <div class="text-muted">
-                        <p class="text-sm">Dibuat oleh
+                        <p class="text-sm">ditujukan untuk
                             <b class="d-block">{{$arahan->user_profile->nama_profile}}</b>
                         </p>
                         <p class="text-sm">email
@@ -142,8 +98,9 @@
                         </li>
                     </ul>
                     <div class="text-center mt-5 mb-3">
-                        <a href="#" class="btn btn-sm btn-primary">Add files</a>
-                        <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+                        <a href="#" class="btn btn-sm btn-primary">tambah berkas</a>
+                        <a href="#" class="btn btn-sm btn-danger">emergency</a>
+                        <a href="#" class="btn btn-sm btn-warning">dispatch</a>
                     </div>
                     </div>
                 </div>

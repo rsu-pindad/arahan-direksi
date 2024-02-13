@@ -6,16 +6,26 @@ use App\Http\Controllers\BerandaController;
 use App\Livewire\Beranda;
 use App\Livewire\LoginUser;
 use App\Livewire\RegisterUser;
+
 use App\Livewire\Pic\Pic;
+use App\Livewire\Pic\PicView;
+use App\Livewire\Pic\PicEdit;
 use App\Livewire\Pic\ViewTables as TablePic;
+
 use App\Livewire\Profile\UserProfile;
 use App\Livewire\Profile\ViewTables as TableProfile;
+
 use App\Livewire\Progress\Progress;
+use App\Livewire\Progress\ProgressEdit;
+use App\Livewire\Progress\ProgressView;
+
 use App\Livewire\Progress\ProgressArahan;
 use App\Livewire\Progress\ProgressArahanOpen;
 use App\Livewire\Progress\ViewTables as TableProgress;
-use App\Livewire\Arahan\AssignArahan;
+
 use App\Livewire\Arahan\Arahan;
+use App\Livewire\Arahan\AssignArahan;
+use App\Livewire\Arahan\StepperArahan;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,31 +38,41 @@ use App\Livewire\Arahan\Arahan;
 |
 */
 
-// Route::get('/', [Beranda::class, 'render'])->name('beranda');
-Route::get('/', [BerandaController::class, 'render'])->name('beranda');
-Route::get('/beranda', [BerandaController::class, 'render']);
+// Route::get('/', [BerandaController::class, 'render'])->name('beranda');
+
+Route::get('/', function(){
+    return Redirect::intended('/login');
+});
+Route::get('/beranda', Beranda::class)->name('beranda');
+
+// user auth
 Route::get('/login', LoginUser::class)->name('login');
 Route::get('/logout', [LoginUser::class,'logout'])->name('logout');
 Route::get('/register', RegisterUser::class)->name('register');
 
 // PIC 
-Route::get('/pic', Pic::class);
-Route::get('/table/pic', TablePic::class);
+Route::get('/pic', Pic::class)->name('pic');
+Route::get('/pic/table', TablePic::class)->name('pic-table');
+Route::get('/pic/view/{id}', PicView::class)->name('pic-view');
+Route::get('/pic/edit/{id}', PicEdit::class)->name('pic-edit');
 
-// User Profiel
-Route::get('/profile', UserProfile::class);
-Route::get('/table/profile', TableProfile::class);
+// User Profile
+Route::get('/profile', UserProfile::class)->name('profile');
+Route::get('/profile/table', TableProfile::class)->name('profile-table');
 
 // Master Progress
-Route::get('/progress', Progress::class);
-Route::get('/table/progress', TableProgress::class);
+Route::get('/progress', Progress::class)->name('progress');
+Route::get('/progress/view/{id}', ProgressView::class)->name('progress-view');
+Route::get('/progress/edit/{id}', ProgressEdit::class)->name('progress-edit');
+Route::get('/progress/table', TableProgress::class)->name('progress-table');
 
 // Master Arahan
-Route::get('/arahan', Arahan::class);
+// Route::get('/arahan', Arahan::class)->name('arahan');
+Route::get('/arahan', StepperArahan::class)->name('arahan');
+
+// Assign Arahan / kanban arahan
+Route::get('/assign-arahan', AssignArahan::class)->name('assign-arahan');
 
 // Progress Arahan
-Route::get('/progress-arahan', ProgressArahan::class);
-Route::get('/progress-arahan/{id}', ProgressArahanOpen::class);
-
-// Assign Arahan
-Route::get('/assign-arahan', AssignArahan::class);
+Route::get('/progress-arahan', ProgressArahan::class)->name('progress-arahan');
+Route::get('/progress-arahan/{id}', ProgressArahanOpen::class)->name('progress-arahan-detail');

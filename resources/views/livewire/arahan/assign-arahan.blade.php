@@ -1,5 +1,5 @@
-<!-- Template -->
-<div class="content-wrapper">
+   <!-- Template -->
+   <div class="content-wrapper">
       <section class="content-header">
          <div class="container-fluid">
             <div class="row mb-2">
@@ -31,7 +31,7 @@
                               <select wire:model.lazy="form.arahan_id" class="custom-select rounded-0">
                                  <option readonly selected>pilih deskripsi arahan</option>
                                  @foreach(\App\Models\MasterArahan::where('assign_status', 0)->get() as $ar)
-                                       <option value="{{$ar->id}}">{{$ar->nama_arahan}}</option>
+                                    <option value="{{$ar->id}}">{{$ar->nama_arahan}}</option>
                                  @endforeach
                               </select>
                               @error('form.arahan_id') <div class="alert alert-danger">{{ $message }}</div> @enderror 
@@ -41,7 +41,7 @@
                               <select wire:model.lazy="form.progress_id" class="custom-select rounded-0">
                                  <option readonly selected>pilih Progress</option>
                                  @foreach(\App\Models\MasterProgress::all() as $pro)
-                                 <option value="{{$pro->id}}">{{$pro->status_progress}}</option>
+                                    <option value="{{$pro->id}}">{{$pro->status_progress}}</option>
                                  @endforeach
                               </select>
                               @error('form.progress_id') <div class="alert alert-danger">{{ $message }}</div> @enderror 
@@ -50,23 +50,7 @@
                         </form>
                      </div>
                      <div class="card-footer">
-                     @if(session()->has('success'))
-                     <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
-                        <div class="alert alert-success alert-dismissible">
-                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                           <h5><i class="icon fas fa-check"></i> </h5>
-                           {{ session('success') }}
-                        </div>
-                     </div>
-                     @elseif(session()->has('failure'))
-                     <!-- <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show"> -->
-                        <div class="alert alert-danger alert-dismissible">
-                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                           <h5><i class="icon fas fa-ban"></i></h5>
-                           {{ session('failure') }}
-                        </div>
-                     <!-- </div> -->
-                     @endif
+                        @include('components.alert.alert-timeout-custom')
                      </div>
                   </div>
                </div>
@@ -74,4 +58,4 @@
          </div>
       </section>
    </div>
-<!-- End Template -->
+   <!-- End Template -->
