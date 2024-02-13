@@ -40,26 +40,28 @@ class AssignArahanForm extends Form
         $this->progress_id = $pivot->progress_id;
     }
 
-    public function sendWhatapps($data)
+    public function sendWhatapps(Array $data)
     {
-
         $response = Curl::to('https://api.fonnte.com/send')
         ->withData(array(
-             'target' => $data,
-             'message' => 'Hallo user RUMAH SAKIT UMUM PINDAD ada arahan direksi ditujukan kepada anda mohon segera cek terimakasih', 
+             'target' => $data['nomor_hp'],
+             'message' => 'Hallo, '.$data['nama'].', terdapat arahan direksi RUMAH SAKIT UMUM PINDAD ditujukan kepada anda, mohon segera cek terimakasih', 
              'countryCode' => '62', 
-             'delay' => 5, ))
+             'delay' => 10, ))
         ->withHeader('Authorization: 2qB#yoP6MKX2Z3_pDZfj')
+        ->returnResponseObject()
         ->post();
 
         // dd($response);
 
-        // if($response['status'] == true)
-        // {
-        //     return 'notifikasi whatsapp sudah dikirim ke '.$data;
-        // }else{
-        //     return 'notifikasi whatsapp gagal dikirim ke '.$data;
-        // }
+        if($response->status == true)
+        {
+            $message = 'notifikasi whatsapp sudah dikirim ke '.$data['nama'];
+            return $message;
+        }else{
+            $message = 'notifikasi whatsapp gagal dikirim ke '.$data['nama'];
+            return $message;
+        }
 
         // $curl = curl_init();
 
@@ -104,7 +106,12 @@ class AssignArahanForm extends Form
             // dd($this->validate());
             Arahan::where('id', $this->arahan_id)->update(['assign_status' => true]);
             $arahan = Arahan::where('id', $this->arahan_id)->first();
-            $wa = $this->sendWhatapps($arahan->user_profile->nomor_handphone_profile);
+            $data = [];
+            $data = [
+                'nomor_hp' => $arahan->user_profile->nomor_handphone_profile,
+                'nama' => $arahan->user_profile->nama_profile,
+            ];
+            $sendWa = $this->sendWhatapps($data);
 
             Pivot::updateOrCreate(
                 $this->only([
@@ -113,7 +120,7 @@ class AssignArahanForm extends Form
                 ])
             );
             $this->reset();
-            session()->flash('success', 'assign berhasil ');
+            session()->flash('success', 'assign berhasil '.$sendWa);
         } catch (\Illuminate\Database\QueryException $exception) {
             session()->flash('failure',$exception->getMessage());
         }

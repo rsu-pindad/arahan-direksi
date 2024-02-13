@@ -18,7 +18,10 @@
          <div class="container-fluid"> 
             <div class="row">
                <div class="col-3">
-                  @include('livewire.mist.sticky')
+                  @include('livewire.mist.sticky-arahan')
+               </div>
+               <div class="col-3">
+                  @include('livewire.mist.sticky-progress')
                </div>
                <div class="col-9">
                   <div class="row">
