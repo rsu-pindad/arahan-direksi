@@ -61,7 +61,9 @@
                               <input type="date" class="form-control" wire:model="form.target_selesai">
                               @error('form.target_selesai') <p class="alert alert-danger">{{ $message }}</p> @enderror
                            </div>
-                           <button class="btn btn-primary" type="submit">Simpan</button>
+                           <button class="btn btn-primary" type="submit">
+                           <i class="fas fa-save fa-lg"></i>
+                           </button>
                         </form>
                      </div>
                      <div class="card-footer">

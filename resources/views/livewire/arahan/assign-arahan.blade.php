@@ -5,7 +5,7 @@
             <div class="row mb-2">
                <div class="col-12">
                   <ol class="breadcrumb float-sm-right">
-                     <li class="breadcrumb-item active">Assign Arahan</li>
+                     <li class="breadcrumb-item active">Menetapkan Arahan</li>
                   </ol>
                </div>
             </div>
@@ -17,7 +17,7 @@
                <div class="col-12">
                   <div class="card card-secondary card-outline">
                      <div class="card-header">
-                        <h3 class="card-title">Assign Arahan</h3>
+                        <h3 class="card-title">Menetapkan Arahan</h3>
                         <div class="card-tools">
                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                            <i class="fas fa-minus"></i>

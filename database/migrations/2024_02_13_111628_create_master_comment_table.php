@@ -16,10 +16,11 @@ return new class extends Migration
             $table->foreignUuid('user_profile_id');
             $table->foreignUuid('arahan_id');
             $table->uuid('parent_id')->nullable();
-            $table->text('body');
+            $table->string('body');
 
             $table->foreign('user_profile_id')->references('id')->on('user_profile');
             $table->foreign('arahan_id')->references('id')->on('master_arahan');
+            // $table->foreign('parent_id')->references('id')->on('master_comment');
             $table->timestamps();
         });
     }

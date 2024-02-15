@@ -12,7 +12,7 @@
                         Progress
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="/table/progress" wire:navigate>Tabel Progress</a>
+                        <a href="/progress/table" wire:navigate>Tabel Progress</a>
                     </li>
                   </ol>
                </div>
@@ -33,8 +33,7 @@
                         </div>
                      </div>
                      <div class="card-body">
-                        <form 
-                           wire:submit.prevent="save">
+                        <form>
                             <div class="form-group">
                               <input 
                                  type="text" 
@@ -46,7 +45,12 @@
                             <div class="form-group">
                               
                             </div>
-                            <button class="btn btn-primary" type="submit">simpan</button>
+                            <button 
+                              class="btn btn-primary btn-block" 
+                              type="submit"
+                              wire:click.prevent="save">
+                            <i class="fas fa-save fa-lg"></i>
+                            </button>
                         </form>
                      </div>
                      <div class="card-footer">

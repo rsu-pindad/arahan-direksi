@@ -22,7 +22,7 @@
                <div class="col-12">
                   <div class="card card-primary card-outline">
                      <div class="card-body">
-                        @livewire('pic.pictable', [
+                        @livewire('pic.pic-table', [
                            'lazy' => true,
                            'navigate' => true,
                            ])

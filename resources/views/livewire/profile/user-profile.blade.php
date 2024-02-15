@@ -25,7 +25,7 @@
                         </div>
                      </div>
                      <div class="card-body">
-                        <form wire:submit="save">
+                        <form>
                             <div class="form-group">
                                 <label for="form.pic_id">Pilih Level PIC <sup>*</sup></label>
                                 <select wire:model.change="form.pic_id" class="custom-select rounded-0">
@@ -66,7 +66,16 @@
                                     wire:model="form.email">
                                     @error('form.email') <p class="alert alert-danger">{{ $message }}</p> @enderror
                                 </div>
-                            <button class="btn btn-primary" type="submit">perbarui</button>
+                            <button 
+                              class="btn btn-primary mb-2 btn-block" 
+                              type="submit"
+                              wire:click.prevent='save'><i class="fas fa-pen-square fa-lg"></i></button>
+                            <button 
+                              class="btn btn-warning btn-block" 
+                              type="submit"
+                              wire:click.prevent='clear'>
+                              <i class="fas fa-eraser fa-lg"></i>
+                              </button>
                         </form>
                      </div>
                      <div class="card-footer">

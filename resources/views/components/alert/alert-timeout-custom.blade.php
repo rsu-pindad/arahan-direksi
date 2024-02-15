@@ -1,19 +1,17 @@
-<div>
+<div class="mt-2">
     @if(session()->has('success'))
-        <div x-data="{show: true}" x-init="setTimeout(() => show = false, 5000)" x-show="show">
+        {{-- <div x-data="{show: true}" x-init="setTimeout(() => show = false, 5000)" x-show="show"> --}}
             <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h5><i class="icon fas fa-check"></i> </h5>
-                {{ session()->get('success') }}
+                <span><i class="icon fas fa-check fa-lg"></i> 
+                {{ session()->get('success') }}</span>
             </div>
-        </div>
+        {{-- </div> --}}
     @elseif(session()->has('failure'))
-        <div x-data="{show: true}" x-init="setTimeout(() => show = false, 5000)" x-show="show">
+        {{-- <div x-data="{show: true}" x-init="setTimeout(() => show = false, 50000)" x-show="show"> --}}
             <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h5><i class="icon fas fa-ban"></i></h5>
-                {{ session()->get('failure') }}
+                <span><i class="icon fas fa-ban fa-lg"></i> 
+                {{ session()->get('failure') }}</span>
             </div>
-        </div>
+        {{-- </div> --}}
     @endif
 </div>

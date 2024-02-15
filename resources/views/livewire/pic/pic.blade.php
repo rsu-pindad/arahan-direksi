@@ -6,6 +6,12 @@
                <div class="col-12">
                   <ol class="breadcrumb float-sm-right">
                      <li class="breadcrumb-item active">PIC</li>
+                     <li class="breadcrumb-item">
+                        <a 
+                           href="pic/table"
+                           wire:navigate>
+                        Tabel PIC</a>
+                     </li>
                   </ol>
                </div>
             </div>
@@ -22,13 +28,10 @@
                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                            <i class="fas fa-minus"></i>
                            </button>
-                           <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                           <i class="fas fa-times"></i>
-                           </button>
                         </div>
                      </div>
                      <div class="card-body">
-                        <form wire:submit="save">
+                        <form>
                             <div class="form-group">
                             <input type="number" placeholder="masukan nomor level" min="1" max="6" class="form-control" wire:model="level_pic" place>
                                 @error('level_pic') <p class="error">{{ $message }}</p> @enderror     
@@ -37,27 +40,16 @@
                                 <input type="text" placeholder="masukan nama level pic" class="form-control" wire:model="nama_pic">
                                 @error('nama_pic') <p class="error">{{ $message }}</p> @enderror
                             </div>
-                            <button class="btn btn-primary" type="submit">simpan</button>
+                            <button 
+                              class="btn btn-primary btn-block" 
+                              type="submit"
+                              wire:click.prevent='save'>
+                            <i class="fas fa-save fa-lg"></i>
+                            </button>
                         </form>
                      </div>
                      <div class="card-footer">
-                     @if(session()->has('success'))
-                     <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
-                        <div class="alert alert-success alert-dismissible">
-                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                           <h5><i class="icon fas fa-check"></i> </h5>
-                           {{ session('success') }}
-                        </div>
-                     </div>
-                     @elseif(session()->has('failure'))
-                     <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
-                        <div class="alert alert-danger alert-dismissible">
-                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                           <h5><i class="icon fas fa-ban"></i></h5>
-                           {{ session('failure') }}
-                        </div>
-                     </div>
-                     @endif
+                     @include('components.alert.alert-timeout-custom')
                      </div>
                   </div>
                </div>
