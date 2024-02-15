@@ -32,12 +32,12 @@ class ProgressArahanOpen extends Component
         return $profile;
     }
 
-    #[Computed(persist: true)]
-    private function arahans()
-    {
-        $arahan_id = Arahan::where('id', Route::current()->id)->first();
-        return $arahan_id;
-    }
+    // #[Computed(persist: true)]
+    // private function arahans()
+    // {
+    //     $arahan_id = Arahan::where('id', Route::current()->id)->first();
+    //     return $arahan_id;
+    // }
 
     #[Computed(persist: true)]
     public function pivotId()
@@ -51,8 +51,8 @@ class ProgressArahanOpen extends Component
         $this->arahan = Arahan::where('id',$id)->first();
         // $this->arahan = Pap::where('arahan_id',$id)->first();
         $this->form->user_profile_id = $this->user_profile->id;
-        // $this->form->arahan_id = $this->arahan->id;
-        $this->form->arahan_id = $this->arahans;
+        $this->form->arahan_id = $this->arahan->id;
+        // $this->form->arahan_id = $this->arahans;
         // $this->pivotId = $id;
         $this->pivots = $this->pivotId->id;
     }
