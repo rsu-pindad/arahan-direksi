@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        @once
         @include('components.layouts.head')
+        @endonce
 
         <title>{{ $title ?? 'RSU Pindad' }}</title>
     </head>
@@ -41,7 +43,8 @@
         {{$slot}}
         @endauth
 
+        @once
         @include('components.layouts.scriptset')
-
+        @endonce
     </body>
 </html>

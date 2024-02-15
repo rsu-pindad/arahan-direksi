@@ -9,7 +9,7 @@
                         Progress
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="/table/progress" wire:navigate>Tabel Progress</a>
+                        <a href="/progress/table" wire:navigate>Tabel Progress</a>
                     </li>
                   </ol>
                </div>
@@ -46,9 +46,15 @@
                                  wire:model="status_progress">
                                 @error('status_progress') <p class="error">{{ $message }}</p> @enderror     
                             </div>
-                              <button class="btn btn-primary" type="submit">
-                              perbarui
+                              <button class="btn btn-warning btn-block mb-2" type="submit">
+                              <i class="fas fa-pen-square fa-lg"></i>
                               </button>
+                              <a 
+                                 href="/progress/table"
+                                 class="btn btn-primary btn-block"
+                                 wire:navigate>
+                              <i class="fas fa-backspace fa-lg"></i>
+                              </a>
                         </form>
                      </div>
                      <div class="card-footer">

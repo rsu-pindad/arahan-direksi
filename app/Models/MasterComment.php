@@ -10,7 +10,7 @@ class MasterComment extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $table = ['master_comment'];
+    protected $table = 'master_comment';
 
     protected $guarded = ['id'];
 

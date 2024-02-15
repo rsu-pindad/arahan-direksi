@@ -33,7 +33,7 @@
                            class="nav-link {{ Route::is('arahan') ? 'active' : '' }}"
                            wire:navigate>
                            <i class="far fa-circle nav-icon"></i>
-                           <p>Data Deskripsi Arahan</p>
+                           <p>Menetapkan Arahan</p>
                         </a>
                      </li>
                   </ul>
@@ -110,7 +110,7 @@
                   <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-paper-plane"></i>
                      <p>
-                        Assign Arahan
+                        Menetapkan Arahan
                         <i class="right fas fa-angle-left"></i>
                      </p>
                   </a>
@@ -121,7 +121,7 @@
                            class="nav-link {{ Route::is('assign-arahan') ? 'active' : '' }}"
                            wire:navigate>
                            <i class="far fa-circle nav-icon"></i>
-                           <p>Data Assign Arahan</p>
+                           <p>Data Menetapkan Arahan</p>
                         </a>
                      </li>
                   </ul>

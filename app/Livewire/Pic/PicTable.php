@@ -4,7 +4,7 @@ namespace App\Livewire\Pic;
 
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Columns\{ DateColumn, LinkColumn};
+use Rappasoft\LaravelLivewireTables\Views\Columns\{DateColumn};
 use App\Models\MasterPic;
 
 class PicTable extends DataTableComponent
@@ -29,9 +29,7 @@ class PicTable extends DataTableComponent
     {
         return [
             Column::make("id", "id")->hideIf(true),
-            Column::make("nama", "nama_pic")
-                ->sortable()
-                ->searchable(),
+            Column::make("nama", "nama_pic")->searchable(),
             Column::make("level", "level_pic")
                 ->sortable(),
             DateColumn::make("dibuat", "created_at")

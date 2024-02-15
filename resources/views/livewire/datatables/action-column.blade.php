@@ -1,28 +1,30 @@
-<div>
+<div class="text-right py-0 align-middle">
+    <div claas="btn-group btn-group-sm p-2">
     @isset($viewLink)
         <a 
             href="{{ $viewLink }}"
-            class="badge badge-info"
+            class="btn btn-s btn-info"
             wire:navigate>
-            lihat
+            <i class="fas fa-eye"></i>
         </a>
     @endif
     @isset($editLink)
         <a 
             href="{{ $editLink }}"
-            class="badge badge-dark"
+            class="btn btn-s btn-secondary"
             wire:navigate>
-            edit
+            <i class="fas fa-pen-square"></i>
         </a>
     @endif
     @isset($deleteLink)
         <button
             type="button"
-            class="btn btn-xs btn-danger"
+            class="btn btn-s btn-danger"
             wire:click="delete({{$deleteLink}})"
             wire:confirm="Anda yakin?"
             >
-            hapus 
+            <i class="fas fa-trash"></i>
         </button>
     @endif
+    </div>
 </div>

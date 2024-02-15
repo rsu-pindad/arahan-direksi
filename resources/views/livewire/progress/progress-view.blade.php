@@ -9,7 +9,7 @@
                         Progress
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="/table/progress" wire:navigate>Tabel Progress</a>
+                        <a href="/progress/table" wire:navigate>Tabel Progress</a>
                     </li>
                   </ol>
                </div>
@@ -31,14 +31,28 @@
                      </div>
                      <div class="card-body">
                         <p>
-                            {{$progress->status_progress}}
+                           {{$progress->status_progress}}
                         </p>
                      </div>
                      <div class="card-footer clearfix">
+                     <a 
+                        href="/progress/table"
+                        class="btn btn-secondary"
+                        wire:navigate>
+                     <i class="fas fa-backspace fa-lg"></i>
+                     </a>
                      <ul class="pagination pagination-sm m-0 float-right">
-                            <li class="page-item"><a class="page-link" href="{{$previous}}" wire:navigate>«</a></li>
-                            <li class="page-item"><a class="page-link" href="{{$next}}" wire:navigate>»</a></li>
-                        </ul>
+                        <li class="page-item">
+                           <a class="page-link" href="{{$previous}}" wire:navigate>
+                              <i class="fas fa-chevron-circle-right fa-lg"></i>
+                           </a>
+                        </li>
+                        <li class="page-item">
+                           <a class="page-link" href="{{$next}}" wire:navigate>
+                              <i class="fas fa-chevron-circle-left fa-lg"></i>
+                           </a>
+                        </li>
+                     </ul>
                      </div>
                   </div>
                </div>

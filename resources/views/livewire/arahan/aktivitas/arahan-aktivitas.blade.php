@@ -22,9 +22,10 @@
                 wire:model="form.body"
                 ></textarea>
             <button
-                type="submit" 
+                type="button" 
                 class="btn btn-sm btn-success mt-2"
-                wire:click.prevent="post">post</button>
+                wire:click.prevent="post"><i class="fas fa-paper-plane fa-lg"></i>post</button>
             @error('form.body') <p class="alert alert-danger">{{ $message }}</p> @enderror
         </form>
+        @include('components.alert.alert-timeout-custom')
     </div>

@@ -87,4 +87,9 @@ class ProfileForm extends Form
             session()->flash('failure', $exception->getMessage());
         }
     }
+
+    public function clearForm()
+    {
+        $this->reset();
+    }
 }

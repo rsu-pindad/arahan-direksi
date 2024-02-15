@@ -7,7 +7,7 @@ use Livewire\Component;
 use App\Models\UserProfile as Profile;
 use App\Models\MasterPic as Pic;
 
-class Userprofile extends Component
+class UserProfile extends Component
 {
     public Profile $userProfile;
     public Form $form;
@@ -19,7 +19,7 @@ class Userprofile extends Component
 
     public function render()
     {
-        return view('livewire.profile.userprofile')->with([
+        return view('livewire.profile.user-profile')->with([
             'pic' => Pic::orderByDesc('nama_pic')->get(),
             'profiles' => Profile::firstWhere('user_id', auth()->user()->id),
         ]);
@@ -28,5 +28,10 @@ class Userprofile extends Component
     public function save()
     {
         $this->form->update();
+    }
+
+    public function clear()
+    {
+        $this->form->clearForm();
     }
 }
