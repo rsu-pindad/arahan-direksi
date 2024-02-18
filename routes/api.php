@@ -18,18 +18,3 @@ use App\Http\Controllers\UserController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/register', function(){
- return 'its work on /api/register';
-});
-
-Route::post('/register', [UserController::class, 'register']);
-
-// Route::post('/register', function(Request $request){
-//     $name = strrev($request->input('npp'));
-
-//     $password = strrev(bcrypt($request->input('123123')));
-
-//     return $name.' - '.$password;
-
-// }); 
