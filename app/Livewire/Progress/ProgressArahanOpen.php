@@ -3,6 +3,7 @@
 namespace App\Livewire\Progress;
 
 use Illuminate\Support\Facades\Route;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\Attributes\Computed;
 use App\Models\MasterArahan as Arahan;
@@ -13,59 +14,59 @@ use App\Livewire\Forms\CommentArahanForm as Form;
 
 class ProgressArahanOpen extends Component
 {
+
     public Form $form;
 
-    public $pivots;
-    public $arahan;
-    public $profile;
-    // public $arahan_id;
+    public $pivots = '';
+    public $arahan = '';
+    public $mastercomment = '';
+    public $editIdKomentar = '';
+    public $editBodyKomentar = '';
+    public $editIdPivot = '';
+    public $profiles = '';
 
-    public $editIdKomentar;
-    public $editBodyKomentar;
-
-    public $editIdPivot;
-
-    #[Computed(persist: true)]
+    // #[Computed(persist: true)]
     private function user_profile()
     {
-        $profile = Profile::where('user_id', auth()->user()->id)->first();
-        return $profile;
+        return Profile::where('user_id', auth()->user()->id)->first();
     }
 
     // #[Computed(persist: true)]
-    // private function arahans()
-    // {
-    //     $arahan_id = Arahan::where('id', Route::current()->id)->first();
-    //     return $arahan_id;
-    // }
-
-    #[Computed(persist: true)]
-    public function pivotId()
+    private function arahanId()
     {
-        $pivots = Pap::where('arahan_id', Route::current()->id)->first();
-        return $pivots;
+        return Arahan::where('id', Route::current()->id)->first();
     }
 
-    public function mount($id)
+    // #[Computed(persist: true)]
+    public function pivotId()
     {
-        $this->arahan = Arahan::where('id',$id)->first();
-        // $this->arahan = Pap::where('arahan_id',$id)->first();
-        $this->form->user_profile_id = $this->user_profile->id;
-        $this->form->arahan_id = $this->arahan->id;
-        // $this->form->arahan_id = $this->arahans;
-        // $this->pivotId = $id;
-        $this->pivots = $this->pivotId->id;
+        return Pap::where('arahan_id', Route::current()->id)->first();
+    }
+
+    public function komentar()
+    {
+        return MasterComment::where('arahan_id', Route::current()->id)->orderByDesc('created_at')->get();
+    }
+
+    public function mount()
+    {
+        $this->arahan = $this->arahanId();
+        $this->pivots = $this->pivotId();
+        $this->mastercomment = $this->komentar();
+        $this->profiles = $this->user_profile();
+
+        $this->form->user_profile_id = $this->user_profile()->id;
+        $this->form->arahan_id = $this->arahanId()->id;
     }
 
     public function render()
     {
-        // $data = Pap::where('arahan_id', Route::current()->id)->first(); 
-        // dd($data->arahan->nama_arahan);
-        return view('livewire.progress.progress-arahan-open')->with([
-            'pivot' => Pap::where('arahan_id', Route::current()->id)->first(),
-            'profiles' => Profile::firstWhere('user_id', auth()->user()->id),
-            'mastercomment' => MasterComment::where('arahan_id', Route::current()->id)->orderByDesc('created_at')->get(),
-        ]);
+        return view('livewire.progress.progress-arahan-open');
+        // ->with([
+        //     'pivot' => Pap::where('arahan_id', Route::current()->id)->first(),
+        //     'profiles' => Profile::firstWhere('user_id', auth()->user()->id),
+        //     'mastercomment' => MasterComment::where('arahan_id', Route::current()->id)->orderByDesc('created_at')->get(),
+        // ]);
     }
 
     public function post()
@@ -87,7 +88,6 @@ class ProgressArahanOpen extends Component
 
     public function dispath()
     {
-        // $editIdPivot = $this->editIdPivot;
         try {
             // dd($this->validate());
             $exist = Pap::where('arahan_id', Route::current()->id)->exists();
@@ -116,14 +116,15 @@ class ProgressArahanOpen extends Component
         }
     }
 
-    protected function refreshComponent()
-    {
-        $this->dispatch('$refresh');
-    }
-
     public function close()
     {
         $this->reset();
     }
+
+    // #[On('posted')]
+    // public function refreshKomentar()
+    // {
+
+    // }
 
 }

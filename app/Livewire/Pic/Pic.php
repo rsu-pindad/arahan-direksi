@@ -18,6 +18,11 @@ class Pic extends Component
     #[Validate('min:2', message:'keterangan kurang dari 2', translate:false)]
     public $nama_pic = '';
 
+    public function render()
+    {
+        return view('livewire.pic.pic');
+    }
+
     public function save()
     {
         try { 
@@ -43,10 +48,5 @@ class Pic extends Component
         } catch (\Illuminate\Database\QueryException $exception) {
             return $exception->getMessage();
         }
-    }
-
-    public function render()
-    {
-        return view('livewire.pic.pic');
     }
 }

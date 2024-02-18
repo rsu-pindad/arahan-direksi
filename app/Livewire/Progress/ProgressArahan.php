@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Progress;
 
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
-use App\Models\MasterProgress;
-use App\Models\UserProfile;
-use App\Models\PivotArahanProgress;
+use App\Models\MasterProgress as Progress;
+use App\Models\PivotArahanProgress as Pap;
 
 class ProgressArahan extends Component
 {
@@ -16,20 +16,19 @@ class ProgressArahan extends Component
     public function render()
     {
         return view('livewire.progress.progress-arahan')->with([
-            'progress' => MasterProgress::orderBy('id')->get(),
+            'progress' => Progress::orderBy('id')->get(),
         ]);
     }
 
     public function update()
     {
         try {
-            $pivArahan = PivotArahanProgress::find('id', $pivot_id);
+            $pivArahan = Pap::find('id', $this->pivot_id);
             $pivArahan->update(
                 $this->only([
                     'progress_id',
                 ])
             );
-            // $this->dispatch('$refresh');
         } catch (\Illuminate\Database\QueryException $exception) {
             session()->flash('failure', $exception->getMessage());
         }

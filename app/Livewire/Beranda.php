@@ -2,22 +2,21 @@
 
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\MasterArahan as Arahan;
 
 class Beranda extends Component
 {
+    private $arahan = '';
+
     public function render()
     {
-        $arahan = Arahan::orderByDesc('created_at')->get();
-        // $jumlah = Arahan::where('')
+        $arahan = Arahan::orderByDesc('created_at')->take(5)->latest()->get();
 
         return view('livewire.beranda')
         ->with([
             'title' => 'Arahan',
             'jumlah' => count($arahan),
-            // 'target' => max()
         ]);
     }
 }

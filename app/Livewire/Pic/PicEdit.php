@@ -30,6 +30,16 @@ class PicEdit extends Component
         $this->nama_pic = $pics->nama_pic;
     }
 
+    public function placeholder()
+    {
+        return view('components.mist.placeholder');
+    }
+
+    public function render()
+    {
+        return view('livewire.pic.pic-edit');
+    }
+    
     public function update()
     {
         try { 
@@ -56,15 +66,5 @@ class PicEdit extends Component
         } catch (\Illuminate\Database\QueryException $exception) {
            return $exception->getMessage();
         }
-    }
-
-    public function placeholder()
-    {
-        return view('components.mist.placeholder');
-    }
-
-    public function render()
-    {
-        return view('livewire.pic.pic-edit');
     }
 }

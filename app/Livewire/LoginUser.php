@@ -6,9 +6,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 // use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use App\Livewire\Beranda as Beranda;
 use Session;
-// use Hash;
 
 class LoginUser extends Component
 {
@@ -29,7 +27,7 @@ class LoginUser extends Component
             ])){
                 Session::regenerate();
                 session()->flash('success', 'selamat datang kembali');
-                return redirect('beranda');
+                return $this->redirect('beranda', navigate:false);
             }else{
                 session()->flash('failure', 'npp atau password salah');
             }
@@ -41,9 +39,9 @@ class LoginUser extends Component
     public function logout()
     {
         Session::flush();
-        Auth::logout();
         Session::invalidate();
-        return redirect('login');
+        Auth::logout();
+        return redirect('/');
     }
 
     public function render()
@@ -51,7 +49,7 @@ class LoginUser extends Component
         if(!Auth::check()){
             return view('livewire.login-user');
         }else{
-            return $this->redirect('beranda');
+            return $this->redirect('beranda', navigate:true);
         }
     }
 }

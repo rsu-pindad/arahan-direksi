@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 // use Illuminate\Validation\Rule;
+use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -31,25 +32,21 @@ class RegisterUser extends Component
                 $user = User::updateOrCreate(
                     $this->only(
                         ['npp','password'],
-                        [
-                            $this->npp,
-                            Hash::make($this->password)
-                        ]
-                        )
+                        [$this->npp, Hash::make($this->password)]
+                    )
                 );
                 if($user == true){    
                     $profile = UserProfile::updateOrCreate([
                         'user_id' => $user->id,
                     ]);
                     session()->flash('success', 'user berhasil di buat');
-                    $this->redirect('/login');
+                    $this->redirect('/login', navigate:false);
                 }else{
                     session()->flash('failure', 'terjadi kesalahan');
                 }
             }
         } catch (\Illuminate\Database\QueryException $exception) {
-            $errorInfo = $exception->getMessage();
-            return $errorInfo;
+            return $exception->getMessage();
         }
     }
 
