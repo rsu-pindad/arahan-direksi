@@ -1,9 +1,9 @@
-<div class="text-right py-0 align-middle">
-    <div claas="btn-group btn-group-sm p-2">
+<div class="container text-center">
+    <div claas="btn-group btn-group-md p-2">
     @isset($viewLink)
         <a 
             href="{{ $viewLink }}"
-            class="btn btn-s btn-info"
+            class="btn btn-info"
             wire:navigate>
             <i class="fas fa-eye"></i>
         </a>
@@ -11,7 +11,7 @@
     @isset($editLink)
         <a 
             href="{{ $editLink }}"
-            class="btn btn-s btn-secondary"
+            class="btn btn-secondary"
             wire:navigate>
             <i class="fas fa-pen-square"></i>
         </a>
@@ -19,9 +19,9 @@
     @isset($deleteLink)
         <button
             type="button"
-            class="btn btn-s btn-danger"
+            class="btn btn-danger"
             wire:click="delete({{$deleteLink}})"
-            wire:confirm="Anda yakin?"
+            wire:confirm="Anda yakin menghapus data?"
             >
             <i class="fas fa-trash"></i>
         </button>

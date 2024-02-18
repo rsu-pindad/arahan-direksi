@@ -5,7 +5,15 @@
             <div class="row mb-2">
                <div class="col-12">
                   <ol class="breadcrumb float-sm-right">
-                     <li class="breadcrumb-item active">PIC</li>
+                     <li class="breadcrumb-item">
+                        <a href="/pic" wire:navigate>PIC</a>
+                     </li>
+                     <li class="breadcrumb-item">
+                        <a href="/pic/table" wire:navigate>Tabel Pic</a>
+                     </li>
+                     <li class="breadcrumb-item active">
+                        <b>{{Route::current()->id}}</b>
+                     </li>
                   </ol>
                </div>
             </div>
@@ -18,22 +26,10 @@
                   <div class="card card-secondary card-outline">
                      <div class="card-header">
                         <h3 class="card-title">Level PIC</h3>
-                        <div class="card-tools">
-                           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                           <i class="fas fa-minus"></i>
-                           </button>
-                           <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                           <i class="fas fa-times"></i>
-                           </button>
-                        </div>
                      </div>
                      <div class="card-body">
-                        <p>
-                            {{$pic->level_pic}}
-                        </p>
-                        <p>
-                            {{$pic->nama_pic}}
-                        </p>
+                        <h2>Level : {{$pic->level_pic}}</h2>
+                        <h2>Nama : {{$pic->nama_pic}}</h2>
                      </div>
                      <div class="card-footer clearfix">
                         <ul class="pagination pagination-sm m-0 float-right">

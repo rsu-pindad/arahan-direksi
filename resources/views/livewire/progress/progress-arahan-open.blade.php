@@ -1,12 +1,25 @@
 <!-- Template -->
     <div class="content-wrapper">
         @use('Carbon\Carbon')
+        @use('Illuminate\Support\Str')
+        @php
+            $target = Carbon::parse($arahan->target_selesai ?? '');
+            $nows = Carbon::now();
+            $deadline = $target->diffInDays($nows);
+        @endphp
         <section class="content-header">
             <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-12">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Arahan</li>
+                        <li class="breadcrumb-item active">
+                            <a 
+                                href="/progress-arahan"
+                                wire:navigate>
+                                Kanban Arahan
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">{{Str::limit($this->arahan->nama_arahan ?? '',50)}}</li>
                     </ol>
                 </div>
             </div>
@@ -21,7 +34,7 @@
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
                     <div class="row">
-                        <h4>{{$arahan->nama_arahan ?? ''}}</h4>
+                        <h4>{{$this->arahan->nama_arahan ?? ''}}</h4>
                     </div>
                     <div class="dropdown-divider"></div>
                     <div class="row">
@@ -29,7 +42,7 @@
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
                                 <span class="info-box-text text-center text-muted">Dibuat pada</span>
-                                <span class="info-box-number text-center text-muted mb-0">{{Carbon::parse($arahan->created_at ?? '')->diffForHumans()}}</span>
+                                <span class="info-box-number text-center text-muted mb-0">{{Carbon::parse($this->arahan->created_at ?? '')->diffForHumans()}}</span>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +50,7 @@
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
                                 <span class="info-box-text text-center text-muted">Target selesai</span>
-                                <span class="info-box-number text-center text-muted mb-0">{{Carbon::parse($arahan->target_selesai ?? '')->diffForHumans()}}</span>
+                                <span class="info-box-number text-center text-muted mb-0">{{Carbon::parse($this->arahan->target_selesai ?? '')->diffForHumans()}}</span>
                                 </div>
                             </div>
                         </div>
@@ -45,11 +58,6 @@
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
                                 <span class="info-box-text text-center text-muted">Sisa hari</span>
-                                @php
-                                    $target = Carbon::parse($arahan->target_selesai ?? '');
-                                    $nows = Carbon::now();
-                                    $deadline = $target->diffInDays($nows);
-                                @endphp
                                     <span class="info-box-number text-center text-muted mb-0">{{$deadline ?? ''}}</span>
                                 </div>
                             </div>
@@ -66,20 +74,20 @@
                     </div>
                     <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
                     <h3 class="text-primary"><i class="fas fa-bullseye"></i>&nbsp;Output Arahan</h3>
-                    <h4 class="text-muted mb-2">{{$arahan->output_arahan ?? ''}}</h4>
+                    <h4 class="text-muted mb-2">{{$this->arahan->output_arahan ?? ''}}</h4>
                     <h4 class="text-primary mt-2"><i class="fas fa-tag"></i>&nbsp;Status Arahan</h4>
                         <h5>
                             <span class="badge badge-info badge-lg">
-                                {{$pivot->progress->status_progress ?? ''}}
+                                {{$this->pivots->progress->status_progress ?? ''}}
                             </span>
                         </h5>
                     <br>
                     <div class="text-muted">
                         <p class="text-sm">ditujukan untuk
-                            <b class="d-block">{{$arahan->user_profile->nama_profile ?? ''}}</b>
+                            <b class="d-block">{{$this->arahan->user_profile->nama_profile ?? ''}}</b>
                         </p>
                         <p class="text-sm">email
-                            <b class="d-block">{{$arahan->user_profile->email ?? '' }}</b>
+                            <b class="d-block">{{$this->arahan->user_profile->email ?? '' }}</b>
                         </p>
                     </div>
                     <h5 class="mt-5 text-muted">Project files</h5>
@@ -112,12 +120,12 @@
         </section>
         <section class="content">
         <div class="card">
-            <div 
-                class="card-body" 
-                id="komentarArahan">
+            <div class="card-body" >
                 {{-- wire:ignore.self> --}}
+                
+                    {{-- //include('livewire.arahan.aktivitas.arahan-aktivitas-komentar') --}}
                 @foreach($mastercomment as $mc)
-                    @include('livewire.arahan.aktivitas.arahan-aktivitas-komentar')
+                    <livewire:arahan.aktivitas.arahan-aktivitas-komentar :$mc />
                 @endforeach    
             </div>
         </div>
@@ -128,7 +136,7 @@
                 <h4># Berikan tanggapan</h4>
             </div>
             <div 
-                class="card-body">
+                class="card-body" wire:poll.3s>
                 {{-- wire:ignore.self> --}}
                 @include('livewire.arahan.aktivitas.arahan-aktivitas')   
             </div>

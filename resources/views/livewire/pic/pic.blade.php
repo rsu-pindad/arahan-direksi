@@ -8,9 +8,9 @@
                      <li class="breadcrumb-item active">PIC</li>
                      <li class="breadcrumb-item">
                         <a 
-                           href="pic/table"
+                           href="/pic/table"
                            wire:navigate>
-                        Tabel PIC</a>
+                           Tabel PIC</a>
                      </li>
                   </ol>
                </div>

@@ -5,3 +5,9 @@
 @livewireScripts
 
 @stack('scripts')
+
+<script>
+    document.addEventListener('livewire:navigated', () => { 
+        console.log('OK Navigate');
+    });
+</script>

@@ -2,7 +2,7 @@
     <div class="login-box">
         <div class="login-logo">
             <a href="#" class="text-muted"><b>AKSI</b></a>
-            @include('components.alert.alert-custom')
+            @include('components.alert.toasts')
         </div>
         <div class="card">
             <div class="card-body login-card-body">
@@ -13,7 +13,8 @@
                             class="form-control" 
                             placeholder="npp" 
                             autocomplete="off" 
-                            wire:model="npp">   
+                            wire:model="npp"
+                            wire:loading.attr="disabled">   
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -31,7 +32,8 @@
                             class="form-control" 
                             placeholder="password" 
                             autocomplete="off" 
-                            wire:model="password">
+                            wire:model="password"
+                            wire:loading.attr="disabled">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -44,7 +46,7 @@
                         </p>
                     @enderror 
                     <div class="row">
-                        <div class="col">
+                        <div class="col text-center">
                             <button 
                                 type="submit" 
                                 class="btn btn-primary btn-block"  
@@ -62,13 +64,17 @@
                     <p class="mb-2">
                         <a 
                             href="#" 
-                            wire:navigate>lupa password
+                            wire:navigate
+                            wire:loading.longest.remove
+                            wire:loading.attr="disabled">lupa password
                         </a>
                     </p>
                     <p class="mb-0">
                         <a 
                             href="/register" 
-                            wire:navigate >register
+                            wire:navigate
+                            wire:loading.longest.remove
+                            wire:loading.attr="disabled">daftar
                         </a>
                     </p>
                 </div>

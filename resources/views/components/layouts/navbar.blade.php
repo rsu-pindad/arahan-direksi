@@ -1,7 +1,10 @@
             <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            @php
+                $rememberState = true;
+            @endphp
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                        <a class="nav-link" data-widget="pushmenu" href="#" role="button" data-enable-remember="{{$rememberState}}"><i class="fas fa-bars"></i></a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -25,7 +28,6 @@
                                 class="dropdown-item" 
                                 href="/logout" 
                                 role="button" 
-                                wire:navigate 
                                 wire:confirm="anda yakin keluar?">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span class="float-right text-muted text-sm">Keluar</span>

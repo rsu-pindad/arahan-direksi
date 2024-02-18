@@ -5,12 +5,12 @@
             <div class="row mb-2">
                <div class="col-12">
                   <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item">
+                     <li class="breadcrumb-item">
                         <a href="/pic" wire:navigate>PIC</a>
-                    </li>
-                    <li class="breadcrumb-item active">
+                     </li>
+                     <li class="breadcrumb-item active">
                         Tabel PIC
-                    </li>
+                     </li>
                   </ol>
                </div>
             </div>

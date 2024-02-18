@@ -10,7 +10,8 @@
                             type="text" 
                             class="form-control" 
                             placeholder="masukan npp"
-                            wire:model="npp">
+                            wire:model="npp"
+                            wire:loading.attr="disabled">
                     </div>
                     @error('npp')
                         <p class="text text-danger text-md">
@@ -22,7 +23,8 @@
                             type="password" 
                             class="form-control"
                             placeholder="masukan password" 
-                            wire:model="password">
+                            wire:model="password"
+                            wire:loading.attr="disabled">
                     </div>
                     @error('password')
                         <p class="text text-danger">
@@ -30,13 +32,13 @@
                         </p>
                     @enderror
                     <div class="row">
-                        <div class="col">
+                        <div class="col text-center">
                         <button 
                                 type="submit" 
                                 class="btn btn-primary btn-block"  
                                 wire:click.prevent="save" 
                                 wire:loading.attr="disabled" 
-                                wire:loading.longest.remove>register</button>
+                                wire:loading.longest.remove>daftar</button>
                             <div class="overlay"
                                 wire:loading wire:target="save">
                               <i class="fas fa-2x fa-sync-alt fa-spin"></i>
@@ -48,8 +50,10 @@
                     <p class="mb-2">
                         <a 
                             href="/login" 
-                            wire:navigate>
-                            login
+                            wire:navigate
+                            wire:loading.attr="disabled" 
+                            wire:loading.longest.remove>
+                            masuk
                         </a>
                     </p>
                 </div>

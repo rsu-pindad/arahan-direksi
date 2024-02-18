@@ -4,9 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        @once
-        @include('components.layouts.head')
-        @endonce
+        {{-- include('components.layouts.head') --}}  
+        <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+        @livewireStyles
+        @stack('styles')
+        <script>
+        document.addEventListener('livewire:navigated', () => { 
+            console.log('OK Navigate');
+        });
+        </script>
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+        @livewireScripts
+        @stack('scripts')
 
         <title>{{ $title ?? 'RSU Pindad' }}</title>
     </head>
@@ -43,8 +56,7 @@
         {{$slot}}
         @endauth
 
-        @once
-        @include('components.layouts.scriptset')
-        @endonce
+        {{-- include('components.layouts.scriptset') --}}
+
     </body>
 </html>
