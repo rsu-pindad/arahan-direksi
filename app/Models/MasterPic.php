@@ -17,4 +17,5 @@ class MasterPic extends Model
         'nama_pic',
         'level_pic',
     ];
+    
 }

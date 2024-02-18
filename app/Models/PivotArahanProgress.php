@@ -11,7 +11,7 @@ class PivotArahanProgress extends Model
     use HasFactory;
 
     protected $table = 'pivot_ap';
-    protected $guarded = ['id'];
+    protected $guarded = ['id','arahan_id','progress_id'];
 
     protected $fillable = [
         'arahan_id',

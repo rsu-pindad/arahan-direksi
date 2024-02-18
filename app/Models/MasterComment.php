@@ -12,7 +12,7 @@ class MasterComment extends Model
 
     protected $table = 'master_comment';
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id','user_profile_id', 'arahan_id'];
 
     protected $fillable = [
         'user_profile_id',

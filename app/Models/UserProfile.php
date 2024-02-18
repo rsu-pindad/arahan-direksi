@@ -12,7 +12,7 @@ class UserProfile extends Model
 
     protected $table = 'user_profile';
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'user_id'];
 
     protected $fillable = [
         'user_id',

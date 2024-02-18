@@ -11,7 +11,7 @@ class MasterArahan extends Model
     use HasFactory, HasUuids;
 
     protected $table = 'master_arahan';
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'user_profile_id'];
 
     protected $fillable = [
         'user_profile_id',
